@@ -1,0 +1,17 @@
+header {
+    width: 100%;
+    padding: 15px 5%;
+    background-color: black;
+    border-bottom: 1px solid #ffffff;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header img {
+    width: 45px;
+    height: 45px;
+}

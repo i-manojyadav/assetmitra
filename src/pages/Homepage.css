@@ -1,0 +1,18 @@
+.HomeContent {
+    display: flex;
+    padding: 2% 10%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.HomeContent h1 {
+    margin: 25px;
+    color: #ffffff;
+    font-size: 100px;
+    text-transform: uppercase;
+}
+
+.HomeContent p {
+    font-size: 22px;
+    text-align: center;
+}
