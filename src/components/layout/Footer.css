@@ -1,8 +1,16 @@
 footer {
     width: 100%;
-    padding: 25px 10%;
     display: flex;
+    padding: 15px 10%;
     flex-direction: column;
     align-items: center;
-    border-top: 1px solid #ffffff;
+    box-shadow: 0 -1px 0 rgb(70, 70, 70);
+}
+
+footer div {
+    margin: 7px 0;
+}
+
+footer p {
+    margin: 0;
 }

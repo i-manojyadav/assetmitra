@@ -1,10 +1,11 @@
 button {
-    font-size: 17px;
     border: none;
+    cursor: pointer;
+    font-size: 16px;
     font-weight: 500;
     color: #000000;
     padding: 8px 15px;
     border-radius: 100px;
     background-color: #ffffff;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "Mulish", sans-serif;
 }

@@ -10,11 +10,10 @@ function Header() {
                     <img src="src\assets\AssetMitra Logo White.png" alt="AssetMitra"></img>
                 </div>
                 <div>
-                    <a>Home</a>
-                    <a>Features</a>
+                    <p>Hello, Welcome!</p>
                 </div>
                 <div>
-                    <Button icon="fa-regular fa-eye" name="Demo" />
+                    <Button icon="fa-regular fa-user" name="Account" />
                 </div>
             </nav>
         </header>

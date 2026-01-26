@@ -1,0 +1,26 @@
+.feature-card {
+    gap: 25px;
+    width: 30%;
+    display: flex;
+    padding: 15px 25px;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 0 1px rgb(145, 145, 145);
+}
+
+.feature-card h3 {
+    margin: 5px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.feature-card i {
+    color: #ffffff;
+    font-size: 40px;
+}
+
+@media(max-width: 768px) {
+    .feature-card {
+        width: 100%;
+    }
+}

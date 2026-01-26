@@ -1,22 +1,50 @@
 * {
     box-sizing: border-box;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "Mulish", sans-serif;
 }
 
-body {
+body, html, #root {
     width: 100%;
-    background-color: black;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #000000;
+}
+
+h1 {
+    font-size: 75px;
+    margin: 5px 0;
+    color:#ffffff;
+    font-family: "Mulish", sans-serif;
+}
+
+h2 {
+    margin: 5px 0;
+    font-size: 26px;
+    color:#ffffff;
+    font-family: "Mulish", sans-serif;
+}
+
+h3 {
+    margin: 5px 0;
+    font-size: 23px;
+    color:#ffffff;
+    font-family: "Mulish", sans-serif;
 }
 
 p {
-    color: #ffffff;
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #c4c4c4;
 }
 
 a {
-    margin: 0 10px;
+    margin: 0 5px;
     font-size: 17px;
     color: #ffffff;
-    font-family: "JetBrains Mono", monospace;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "Mulish", sans-serif;
 }
 
 i {
