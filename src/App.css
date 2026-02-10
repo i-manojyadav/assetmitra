@@ -1,0 +1,17 @@
+.layout {
+    gap: 50px;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    padding: 25px 12%;
+    margin-top: 75px;
+}
+
+.sidebar-div {
+    width: 25%;
+    border-right: 1px solid #ffffff;
+}
+
+.content-div {
+    width: 75%;
+}

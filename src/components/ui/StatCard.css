@@ -1,0 +1,16 @@
+.stat-card {
+    gap: 10px;
+    width: fit-content;
+    color: #ffffff;
+    padding: 10px 35px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #111111;
+    box-shadow: 0 0 1px rgb(145, 145, 145);
+}
+
+.stat-card i {
+    color: #6c6c6c;
+    font-size: 35px;
+}

@@ -1,0 +1,45 @@
+.layout {
+    width: 100%;
+}
+
+.in-layout {
+    gap: 50px;
+    width: 100%;
+    display: flex;
+    margin-top: 75px;
+    padding: 25px 10%;
+    min-height: 100vh;
+}
+
+.sidebar-sec {
+    width: 25%;
+}
+
+.content-sec {
+    width: 75%;
+}
+
+.layout-border {
+    height: 100vh;
+    width: 1px;
+    border: 1px solid #202020;
+}
+
+@media(max-width: 768px) {
+    .layout {
+        width: 100%;
+    }
+
+    .in-layout {
+        gap: 0;
+        padding: 25px 15px;
+    }
+
+    .content-sec {
+        width: 100%;
+    }
+
+    .layout-border {
+        display: none;
+    }
+}

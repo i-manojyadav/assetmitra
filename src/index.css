@@ -50,3 +50,64 @@ a {
 i {
     margin-right: 7px;
 }
+
+table {
+    width: 100%;
+    margin: 10px 0;
+    color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+
+tr {
+    border: 2px solid #1f1f1f;
+}
+
+th {
+    padding: 10px 15px;
+    text-transform: uppercase;
+    border: 1px solid #1f1f1f;
+}
+
+td {
+    padding: 12px 10px;
+    background-color: #151515;
+}
+
+ol {
+    color: #ffffff;
+}
+
+label {
+    font-weight: 500;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+    border: none;
+    color: #ffffff;
+    padding: 15px 15px;
+    border-radius: 5px;
+    background-color: #151515;
+}
+
+input::placeholder {
+    color: #c4c4c4;
+}
+
+select {
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+option {
+    color: #ffffff;
+    border-radius: 10px;
+    background-color: #151515;
+}

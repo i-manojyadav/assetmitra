@@ -1,0 +1,13 @@
+.portfolio {
+    width: 100%;
+}
+
+.select-portfolio {
+    margin: 0 0 25px 0;
+}
+
+@media (max-width: 768px) {
+    .portfolio {
+        width: 100%;
+    }
+}

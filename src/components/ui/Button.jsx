@@ -2,7 +2,7 @@ import './Button.css'
 
 function Button({icon, name}) {
     return(
-        <button><i class={icon}></i>{name}</button>
+        <button><i className={icon}></i><span>{name}</span></button>
     )
 }
 

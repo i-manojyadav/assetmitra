@@ -1,0 +1,63 @@
+.crypto-portfolio {
+    width: 100%;
+}
+
+.crypto-stats {
+    gap: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.add-coin {
+    margin: 25px 0;
+}
+
+.add-coin-form form {
+    gap: 15px;
+    width: fit-content;
+    display: flex;
+    margin-top: 25px;
+}
+
+.addCoinBtn {
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+
+/* Folio Table */
+
+.folio-action {
+    text-align: center;
+}
+
+
+
+@media (max-width: 768px) {
+    .crypto-portfolio {
+        width: 100%;
+    }
+
+    .crypto-stats {
+        overflow: scroll;
+        padding-bottom: 15px;
+    }
+
+    .add-coin-form form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .add-coin-form button {
+        width: fit-content;
+        padding: 12px 25px;
+    }
+
+    .crypto-folio {
+        overflow: scroll;
+        padding-bottom: 3px;
+    }
+}

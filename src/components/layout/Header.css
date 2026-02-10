@@ -9,38 +9,31 @@ header {
 
 nav {
     display: flex;
+    margin: 3px 5px;
     padding: 10px 10%;
     align-items: center;
     justify-content: space-between;
 }
 
-nav div p {
-    color: #0dea2e;
-    align-items: center;
-    padding: 8px 10px;
-    border-radius: 999px;
-}
-
 header img {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
 }
 
 @media (max-width: 768px) {
     header {
-        width: 90%;
-        top: auto;
-        bottom: 45px;
+        width: 100%;
+        top: 0px;
         left: 50%;
         position: fixed;
-        border-radius: 100px;
+        box-shadow: none;
         transform: translateX(-50%);
-        background-color: #272727;
+        background-color: #151515;
     }
 
     header img {
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
     }
 
     header nav div > p {
@@ -49,6 +42,6 @@ header img {
     }
 
     nav button {
-        display: none;
+        display: block;
     }
 }
