@@ -9,13 +9,23 @@ export default function CryptoPortfolio() {
 
     const { coinList, folioCoins, setFolioCoins, cryptoStats } = useContext(CryptoPortfolioContext);
 
+    const [isActive, setIsActive] = useState(false);
 
+    function addCoinToggle() {
+        if (isActive === false) {
+            setIsActive(true);
+        }
+
+        else {
+            setIsActive(false)
+        }
+    }
 
     // ADD NEW COIN
     const [coin, setCoin] = useState({
-        coinSymbol: "",
-        coinQty: "",
-        coinAvgBuy: ""
+        symbol: "",
+        qty: "",
+        avgBuy: ""
     });
 
 
@@ -37,15 +47,15 @@ export default function CryptoPortfolio() {
     // MATCHING USER INPUT WITH API DATA
     function userInputMatch() {
         coinList.filter((crypto) => {
-            if (crypto.symbol === coin.coinSymbol.toUpperCase()) {
+            if (crypto.symbol === coin.symbol.toUpperCase()) {
                 setFolioCoins((userCoin) => {
-                    return [...userCoin, {...coin, ltp: crypto.lastPrice * 90, key: uuidv4()}]
+                    return [...userCoin, {...coin, ltp: crypto.lastPrice * 90, inv: coin.qty * coin.avgBuy, key: uuidv4()}]
                 });
 
                 setCoin({
-                    coinSymbol: "",
-                    coinQty: "",
-                    coinAvgBuy: ""
+                    symbol: "",
+                    qty: "",
+                    avgBuy: ""
                 });
 
                 toast.success(`(${crypto.symbol}) Added Successfully!`);
@@ -59,12 +69,12 @@ export default function CryptoPortfolio() {
 
 
     // EXIT OR REMOVE ASSET
-    function removeCoin(coinSymbol, key) {
+    function removeCoin(symbol, key) {
         setFolioCoins(folioCoins.filter((coin) => {
             return coin.key != key;
         }));
 
-        toast.success(`${coinSymbol}, Removed!`);
+        toast.success(`${symbol}, Removed!`);
     }
 
 
@@ -77,17 +87,19 @@ export default function CryptoPortfolio() {
                     <StatCard title="Profit & Loss" value={cryptoStats.pnl} color={true} />
                 </div>
                 <div className='crypto-stats-mobo'>
-                    <StatCardMobo invested={cryptoStats.invested} current={cryptoStats.current} pnl={cryptoStats.pnl} color={true}/>
+                    <StatCardMobo invested={cryptoStats.invested} current={cryptoStats.current} pnl={cryptoStats.pnl} roi={cryptoStats.roi} color={true}/>
                 </div>
             </div>
-            <div className='add-coin'>
+            <div className='add-coin-toggle'>
+                <button style={{display: isActive? "none" : "block"}} onClick={addCoinToggle}>Add Coin</button>
+            </div>
+            <div style={{display: isActive? "block" : "none"}} className='add-coin'>
                 <div className='add-coin-form'>
                     <form onSubmit={addACoin}>
-                        <input type="text" placeholder='Enter Coin Symbol' value={coin.coinSymbol} name='coinSymbol' onChange={handleCoinChange}/>
-                        <input type="number" step="any" placeholder='Enter Quantity' value={coin.coinQty} name='coinQty' onChange={handleCoinChange}/>
-                        <input type="number" step="any" placeholder='Enter Avg. Buy Price' value={coin.coinAvgBuy} name='coinAvgBuy' onChange={handleCoinChange}/>
-                        <button className='addCoinBtn'><i className="fa-solid fa-plus"></i>Add</button>
-                        
+                        <input type="text" placeholder='Enter Coin Symbol' value={coin.symbol} name='symbol' onChange={handleCoinChange}/>
+                        <input type="number" step="any" placeholder='Enter Quantity' value={coin.qty} name='qty' onChange={handleCoinChange}/>
+                        <input type="number" step="any" placeholder='Enter Avg. Buy Price' value={coin.avgBuy} name='avgBuy' onChange={handleCoinChange}/>
+                        <button onClick={() => setIsActive(false)} className='addCoinBtn'><i className="fa-solid fa-plus"></i>Add</button>
                     </form>
                 </div>
             </div>
@@ -108,14 +120,14 @@ export default function CryptoPortfolio() {
                     <tbody>
                         {folioCoins.map((coin, key) => (
                             <tr key={coin.key}>
-                                <td>{coin.coinSymbol.toUpperCase()}</td>
-                                <td>{Number(coin.coinQty).toLocaleString()}</td>
-                                <td>{Number(coin.coinAvgBuy).toLocaleString()}</td>
-                                <td>{Number((Number(coin.coinQty)*Number(coin.coinAvgBuy)).toFixed(2)).toLocaleString()}</td>
-                                <td>{Number((Number(coin.ltp)*Number(coin.coinQty)).toFixed(2)).toLocaleString()}</td>
+                                <td>{coin.symbol.toUpperCase()}</td>
+                                <td>{Number(coin.qty).toLocaleString()}</td>
+                                <td>{Number(coin.avgBuy).toLocaleString()}</td>
+                                <td>{Number(coin.inv).toLocaleString()}</td>
+                                <td>{Number(coin.cur).toLocaleString()}</td>
                                 <td>{Number(Number(coin.ltp).toFixed(2)).toLocaleString()}</td>
-                                <td style={{color: (Number(coin.ltp)*Number(coin.coinQty) - (Number(coin.coinQty)*Number(coin.coinAvgBuy))) > 0 ? "green" : "red"}}>{Number((Number(coin.ltp)*Number(coin.coinQty) - (Number(coin.coinQty)*Number(coin.coinAvgBuy))).toFixed(2)).toLocaleString()}</td>
-                                <td className='folio-action'><i onClick={() => {removeCoin(coin.coinSymbol, coin.key)}} className="fa-solid fa-arrow-right-from-bracket"></i></td>
+                                <td style={{color: coin.pnl > 0? "green" : "red"}}>{Number(coin.pnl).toLocaleString()} ({(((coin.pnl/coin.inv)*100).toFixed(2)).toLocaleString()}%)</td>
+                                <td className='folio-action'><i onClick={() => {removeCoin(coin.symbol, coin.key)}} className="fa-solid fa-arrow-right-from-bracket"></i></td>
                             </tr>
                         ))}
                     </tbody>
@@ -123,19 +135,11 @@ export default function CryptoPortfolio() {
             </div>
             <div className='crypto-folio-mobo'>
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Asset</th>
-                            <th>Change</th>
-                            <th><i className="fa-solid fa-ellipsis-vertical"></i></th>
-                        </tr>
-                    </thead>
                     <tbody>
                         {folioCoins.map((coin, key) => (
-                            <tr key={coin.key}>
-                                <td><div><span>Avg: {coin.coinAvgBuy}</span> | <span>Qty: {coin.coinQty}</span></div> <div className='cfm-asset'>{coin.coinSymbol.toUpperCase()}</div> <div><span>Inv. {Number((Number(coin.coinQty)*Number(coin.coinAvgBuy)).toFixed(2)).toLocaleString()}</span> | <span>Cur. {Number((Number(coin.ltp)*Number(coin.coinQty)).toFixed(2)).toLocaleString()}</span></div> </td>
-                                <td><div><span>{((Number((Number(coin.ltp)*Number(coin.coinQty) - (Number(coin.coinQty)*Number(coin.coinAvgBuy))).toFixed(2)) / Number((Number(coin.coinQty)*Number(coin.coinAvgBuy)).toFixed(2))) * 100).toFixed(2)}%</span></div> <div className='cfm-asset' style={{color: (Number(coin.ltp)*Number(coin.coinQty) - (Number(coin.coinQty)*Number(coin.coinAvgBuy))) > 0 ? "green" : "red"}}>{Number((Number(coin.ltp)*Number(coin.coinQty) - (Number(coin.coinQty)*Number(coin.coinAvgBuy))).toFixed(2)).toLocaleString()}</div> <div><span>LTP {Number(Number(coin.ltp).toFixed(2)).toLocaleString()}</span></div></td>
-                                <td className='folio-action'><i onClick={() => {removeCoin(coin.coinSymbol, coin.key)}} className="fa-solid fa-arrow-right-from-bracket"></i></td>
+                            <tr className='cfm' key={coin.key}>
+                                <td className='cfm-left'><div>{coin.symbol}</div> <div>Inv. {Number(coin.inv.toFixed(2)).toLocaleString()}</div></td>
+                                <td className='cfm-right'><div style={{color: coin.pnl > 0 ? "green" : "red"}}>{Number(((coin.pnl) || 0).toFixed(2)).toLocaleString()} ({(((coin.pnl/coin.inv)*100).toFixed(2)).toLocaleString()}%)</div> <div>LTP: {(coin.ltp.toFixed(2)).toLocaleString()}</div></td>
                             </tr>
                         ))}
                     </tbody>

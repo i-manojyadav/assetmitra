@@ -39,19 +39,20 @@ export function CryptoContext({ children }) {
         if (folioCoins.length === 0) return;
 
         let invested = folioCoins.reduce((sum, coin) => {
-            return sum + coin.coinQty * coin.coinAvgBuy;
+            return sum + coin.qty * coin.avgBuy;
         }, 0);
 
         let current = folioCoins.reduce((sum, coin) => {
-            return sum + coin.ltp * coin.coinQty
+            return sum + coin.ltp * coin.qty
         }, 0);
 
         invested = Number(invested.toFixed(2));
         current = Number(current.toFixed(2));
         let pnl = Number((current - invested).toFixed(2));
+        let roi = Number(((pnl/invested)*100).toFixed(2)).toLocaleString();
 
         setCryptoStats((stat) => {
-            return {...stat, invested: invested, current: current, pnl: pnl}
+            return {...stat, invested: invested, current: current, pnl: pnl, roi: roi}
         });
     }, [folioCoins]);
 
@@ -63,12 +64,12 @@ export function CryptoContext({ children }) {
 
         const coinLTP = folioCoins.map((coin) => {
             const apiCoin = coinList.find((item) => {
-                return item.symbol === coin.coinSymbol.toUpperCase();
+                return item.symbol === coin.symbol.toUpperCase();
             });
 
             if (!apiCoin) return coin;
 
-            return {...coin, ltp: Number(apiCoin.lastPrice * 90)};
+            return {...coin, ltp: Number(apiCoin.lastPrice * 90), cur: coin.qty * Number(apiCoin.lastPrice * 90), pnl: coin.qty * Number(apiCoin.lastPrice * 90) - coin.inv };
         });
 
         setFolioCoins(coinLTP);

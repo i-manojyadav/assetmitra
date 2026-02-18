@@ -22,7 +22,7 @@ function StatCard({ color = false, title, value}) {
 }
 
 
-function StatCardMobo({ invested, current, pnl, color }) {
+function StatCardMobo({ invested, current, pnl, roi, color }) {
 
     let defaultColor = "white";
     if (color) {
@@ -47,7 +47,7 @@ function StatCardMobo({ invested, current, pnl, color }) {
                     <p>P&L</p>
                 </div>
                 <div>
-                    <p style={{color: defaultColor}}>{Number(pnl).toLocaleString()}</p>
+                    <p style={{color: defaultColor}}>{Number(pnl).toLocaleString()} <span>({roi}%)</span></p>
                 </div>
             </div>
         </div>

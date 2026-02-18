@@ -1,6 +1,6 @@
 import './TradeInsightCard.css'
 
-function TradeInsightCard({ icon, cardTitle, data }) {
+function TradeInsightCard({ icon, cardTitle, trades }) {
     return (
         <div className='trade-insight-card'>
             <div className='card-title'>
@@ -10,7 +10,7 @@ function TradeInsightCard({ icon, cardTitle, data }) {
             <div>
                 <table>
                     <tbody>
-                        {data}
+                        {trades}
                     </tbody>
                 </table>
             </div>

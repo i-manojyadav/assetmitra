@@ -17,8 +17,27 @@ export default function PortfolioSummary() {
                     <StatCard title={"Profit & Loss"} value={cryptoStats.pnl} color={true} />
                 </div>
                 <div className='summary-stats-mobo'>
-                    <StatCardMobo invested={cryptoStats.invested} current={cryptoStats.current} pnl={cryptoStats.pnl} color={true} />
+                    <StatCardMobo invested={cryptoStats.invested} current={cryptoStats.current} pnl={cryptoStats.pnl} roi={cryptoStats.roi} color={true} />
                 </div>
+            </div>
+            <div className='trade-insights'>
+                <TradeInsightCard icon={"fa-solid fa-arrow-up-right-dots"} cardTitle={"Gainers"} trades={
+                    folioCoins.map((trade) => (
+                        <tr>
+                            <td>{trade.symbol}</td>
+                            <td>{trade.cur}</td>
+                        </tr>
+                    ))
+                } />
+
+                <TradeInsightCard icon={"fa-solid fa-arrow-trend-down"} cardTitle={"Losers"} trades={
+                    folioCoins.map((trade) => (
+                        <tr>
+                            <td>{trade.symbol}</td>
+                            <td>{trade.ltp}</td>
+                        </tr>
+                    ))
+                } />
             </div>
         </div>
     )

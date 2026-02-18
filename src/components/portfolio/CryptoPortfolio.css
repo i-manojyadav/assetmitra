@@ -16,6 +16,10 @@
     display: none;
 }
 
+.add-coin-toggle {
+    margin: 20px 0;
+}
+
 .add-coin {
     margin: 25px 0;
 }
@@ -83,12 +87,19 @@
 
     .crypto-folio-mobo td {
         color: #c4c4c4;
-        font-size: 12px;
+        font-size: 14px;
     }
 
-    .cfm-asset {
+    .cfm-left {
+        text-align: left;
+    }
+
+    .cfm-right {
+        text-align: right;
+    }
+
+    .cfm-left div,
+    .cfm-right div {
         margin: 5px 0;
-        font-size: 14px;
-        color: #ffffff;
     }
 }
