@@ -1,5 +1,5 @@
 import './StockPortfolio.css'
-import StatCard from '../ui/StatCard'
+import StatCard, { StatCardMobo } from '../ui/StatCard'
 
 export default function StockPortfolio() {
     return (
@@ -8,6 +8,9 @@ export default function StockPortfolio() {
                 <StatCard title="Invested" value="25000" />
                 <StatCard title="Current" value="25000" />
                 <StatCard title="Profit & Loss" value="25000" />
+            </div>
+            <div>
+                <StatCardMobo />
             </div>
         </div>
     )

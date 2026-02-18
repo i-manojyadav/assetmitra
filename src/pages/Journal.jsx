@@ -2,9 +2,11 @@ import './Journal.css'
 
 function Journal() {
     return (
-        <>
-        <h1>Journal</h1>
-        </>
+        <div className='journal'>
+            <div className='selectJournal'>
+                
+            </div>
+        </div>
     )
 }
 

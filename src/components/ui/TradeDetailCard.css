@@ -1,0 +1,84 @@
+.trade-detail-card {
+    gap: 25px;
+    width: 45%;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 20px 20px;
+    border-radius: 10px 10px 0 0;
+    background-color: #111111;
+}
+
+.asset {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.asset-info {
+    width: 50%;
+}
+
+.close-card {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.close-card i:hover {
+    color: #ff6363;
+}
+
+.asset p:nth-of-type(1) {
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.asset p:nth-of-type(2) {
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.asset-btn {
+    display: flex;
+    display: none;
+    justify-content: space-between;
+}
+
+.asset-btn button:nth-of-type(1) {
+    color: #ffffff;
+    background-color: #4f6cff;
+}
+
+.asset-btn button:nth-of-type(2) {
+    color: #ffffff;
+    background-color: #ff6363;
+}
+
+.asset-btn button {
+    width: 30%;
+    border-radius: 5px;
+}
+
+.investment {
+    gap: 25px;
+    width: 100%;
+}
+
+.investment-value {
+    display: flex;
+    justify-content: space-between;
+}
+
+.investment-change div {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media(max-width: 768px) {
+    .trade-detail-card {
+        width: 100%;
+    }
+}

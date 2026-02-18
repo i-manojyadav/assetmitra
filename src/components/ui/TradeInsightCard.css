@@ -1,0 +1,40 @@
+.trade-insight-card {
+    min-width: 40%;
+    border-radius: 10px;
+    box-shadow: 0 0 2px rgb(145, 145, 145);
+}
+
+.trade-insight-card p:nth-of-type(2) {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.trade-insight-card table {
+    margin: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+.trade-insight-card table tr {
+    border: none;
+    border-top: 2px solid #1f1f1f;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+.card-title i {
+    font-size: 23px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .trade-insight-card {
+        width: 100%;
+    }
+}

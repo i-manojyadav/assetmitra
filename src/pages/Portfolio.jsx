@@ -11,8 +11,7 @@ function Portfolio() {
     return(
         <div className='portfolio'>
             <div className='select-portfolio'>
-                <label htmlFor='portfolio'>Portfolio: </label>
-                <select value={selected} onChange={(e) => setSelected(e.target.value)} id="portfolio">
+                <select value={selected} onChange={(e) => setSelected(e.target.value)}>
                     <option value="summary">Summary</option>
                     <option value="crypto">Crypto</option>
                     <option value="stocks">Stocks</option>

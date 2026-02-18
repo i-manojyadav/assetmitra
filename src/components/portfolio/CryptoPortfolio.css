@@ -3,10 +3,17 @@
 }
 
 .crypto-stats {
+    align-items: center;
+}
+
+.crypto-stats-desk {
     gap: 25px;
-    width: 100%;
     display: flex;
     align-items: center;
+}
+
+.crypto-stats-mobo {
+    display: none;
 }
 
 .add-coin {
@@ -15,9 +22,13 @@
 
 .add-coin-form form {
     gap: 15px;
-    width: fit-content;
     display: flex;
     margin-top: 25px;
+    width: fit-content;
+}
+
+.crypto-folio-mobo {
+    display: none;
 }
 
 .addCoinBtn {
@@ -34,15 +45,17 @@
 }
 
 
-
 @media (max-width: 768px) {
     .crypto-portfolio {
         width: 100%;
     }
 
-    .crypto-stats {
-        overflow: scroll;
-        padding-bottom: 15px;
+    .crypto-stats-desk {
+        display: none;
+    }
+
+    .crypto-stats-mobo {
+        display: block;
     }
 
     .add-coin-form form {
@@ -51,13 +64,31 @@
         flex-direction: column;
     }
 
+    .folio-action i {
+        font-size: 17px;
+    }
+
     .add-coin-form button {
         width: fit-content;
-        padding: 12px 25px;
+        padding: 12px;
     }
 
     .crypto-folio {
-        overflow: scroll;
-        padding-bottom: 3px;
+        display: none;
+    }
+
+    .crypto-folio-mobo {
+        display: block;
+    }
+
+    .crypto-folio-mobo td {
+        color: #c4c4c4;
+        font-size: 12px;
+    }
+
+    .cfm-asset {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #ffffff;
     }
 }

@@ -48,7 +48,8 @@ a {
 }
 
 i {
-    margin-right: 7px;
+    margin: 0;
+    padding: 0;
 }
 
 table {
@@ -65,9 +66,9 @@ tr {
 }
 
 th {
-    padding: 10px 15px;
+    padding: 15px 10px;
+    text-align: left;
     text-transform: uppercase;
-    border: 1px solid #1f1f1f;
 }
 
 td {
@@ -92,22 +93,35 @@ input[type="number"] {
     padding: 15px 15px;
     border-radius: 5px;
     background-color: #151515;
+    box-shadow: 0 0 2px rgb(145, 145, 145);
 }
 
 input::placeholder {
     color: #c4c4c4;
 }
 
+input:focus {
+    outline: none;
+}
+
 select {
+    border: none;
+    color: #ffffff;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 10px;
+    background-color: #111111;
+    box-shadow: 0 0 2px rgb(145, 145, 145);
+}
+
+select:focus {
+    outline: none;
 }
 
 option {
+    border: none;
     color: #ffffff;
-    border-radius: 10px;
-    background-color: #151515;
+    background-color: #111111;
 }

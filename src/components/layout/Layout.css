@@ -35,6 +35,10 @@
         padding: 25px 15px;
     }
 
+    .sidebar-sec {
+        width: 0;
+    }
+
     .content-sec {
         width: 100%;
     }

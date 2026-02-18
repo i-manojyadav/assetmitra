@@ -3,7 +3,7 @@ header {
     z-index: 9;
     width: 100%;
     position: fixed;
-    background-color: black;
+    background-color: #000000;
     box-shadow: rgba(251, 251, 251, 0.345) 05px 8px 8px -10px;
 }
 
@@ -22,23 +22,22 @@ header img {
 
 @media (max-width: 768px) {
     header {
-        width: 100%;
         top: 0px;
         left: 50%;
+        width: 100%;
         position: fixed;
         box-shadow: none;
         transform: translateX(-50%);
-        background-color: #151515;
+        box-shadow: rgba(251, 251, 251, 0.345) 05px 8px 8px -10px;
+    }
+
+    nav {
+        padding: 10px;
     }
 
     header img {
         width: 30px;
         height: 30px;
-    }
-
-    header nav div > p {
-        font-size: 15px;
-        margin: 0;
     }
 
     nav button {

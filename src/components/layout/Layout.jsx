@@ -4,10 +4,12 @@ import Footer from './Footer.jsx';
 import Sidebar from './Sidebar.jsx';
 import { Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { CryptoContext } from '../../context/CryptoPortfolioContext.jsx';
 
 function Layout() {
     return (
         <>
+        <CryptoContext>
         <Toaster position="top-center" />
         <div className='layout'>
             <Header />
@@ -22,6 +24,7 @@ function Layout() {
             </div>
             <Footer />
         </div>
+        </CryptoContext>
         </>
     )
 }
