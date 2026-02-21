@@ -15,6 +15,10 @@
     color: #c4c4c4;
 }
 
+.pim td {
+    padding: 17px 10px;
+}
+
 .pim-left {
     text-align: left;
 }
@@ -29,7 +33,7 @@
 
 .asset {
     margin: 50px 0;
-    font-size: 15px;
+    font-size: 14px;
     color: #ffffff;
 }
 
@@ -39,7 +43,7 @@
 }
 
 .value {
-    font-size: 14px;
+    font-size: 13px;
     color: #e1e1e1;
 }
 

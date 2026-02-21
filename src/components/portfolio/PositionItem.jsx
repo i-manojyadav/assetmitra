@@ -61,7 +61,7 @@ function PositionItem() {
                                 </td>
                                 <td className='pim-right'>
                                     <div className='asset-div'><span style={{color: item.pnl > 0 ? "green" : "red"}} className='asset'>{Number(Number(item.pnl).toFixed(2)).toLocaleString()} ({(((item.pnl/item.inv)*100).toFixed(2)).toLocaleString()}%)</span></div>
-                                    <div><span className='title'>LTP</span> <span>{Number(Number(item.ltp).toFixed(2)).toLocaleString()}</span></div>
+                                    <div><span className='title'>LTP</span> <span className='value'>{Number(Number(item.ltp).toFixed(2)).toLocaleString()}</span></div>
                                 </td>
                             </tr>
                         ))}
