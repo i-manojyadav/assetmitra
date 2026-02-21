@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'
 import toast from 'react-hot-toast';
 import { CryptoPortfolioContext } from '../../context/CryptoPortfolioContext';
+import PositionItem from './PositionItem';
 
 export default function CryptoPortfolio() {
 
@@ -68,15 +69,6 @@ export default function CryptoPortfolio() {
     }
 
 
-    // EXIT OR REMOVE ASSET
-    function removeCoin(symbol, key) {
-        setFolioCoins(folioCoins.filter((coin) => {
-            return coin.key != key;
-        }));
-
-        toast.success(`${symbol}, Removed!`);
-    }
-
 
     return (
         <div className='crypto-portfolio'>
@@ -84,7 +76,7 @@ export default function CryptoPortfolio() {
                 <div className='crypto-stats-desk'>
                     <StatCard title="Invested" value={cryptoStats.invested} />
                     <StatCard title="Current" value={cryptoStats.current} />
-                    <StatCard title="Profit & Loss" value={cryptoStats.pnl} color={true} />
+                    <StatCard title="Profit & Loss" value={cryptoStats.pnl} roi={cryptoStats.roi} color={true} />
                 </div>
                 <div className='crypto-stats-mobo'>
                     <StatCardMobo invested={cryptoStats.invested} current={cryptoStats.current} pnl={cryptoStats.pnl} roi={cryptoStats.roi} color={true}/>
@@ -104,46 +96,7 @@ export default function CryptoPortfolio() {
                 </div>
             </div>
             <div className='crypto-folio'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Asset</th>
-                            <th>Qty</th>
-                            <th>Avg</th>
-                            <th>Invested</th>
-                            <th>Current</th>
-                            <th>LTP</th>
-                            <th>P&L</th>
-                            <th><i className="fa-solid fa-ellipsis-vertical"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {folioCoins.map((coin, key) => (
-                            <tr key={coin.key}>
-                                <td>{coin.symbol.toUpperCase()}</td>
-                                <td>{Number(coin.qty).toLocaleString()}</td>
-                                <td>{Number(coin.avgBuy).toLocaleString()}</td>
-                                <td>{Number(coin.inv).toLocaleString()}</td>
-                                <td>{Number(coin.cur).toLocaleString()}</td>
-                                <td>{Number(Number(coin.ltp).toFixed(2)).toLocaleString()}</td>
-                                <td style={{color: coin.pnl > 0? "green" : "red"}}>{Number(coin.pnl).toLocaleString()} ({(((coin.pnl/coin.inv)*100).toFixed(2)).toLocaleString()}%)</td>
-                                <td className='folio-action'><i onClick={() => {removeCoin(coin.symbol, coin.key)}} className="fa-solid fa-arrow-right-from-bracket"></i></td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-            <div className='crypto-folio-mobo'>
-                <table>
-                    <tbody>
-                        {folioCoins.map((coin, key) => (
-                            <tr className='cfm' key={coin.key}>
-                                <td className='cfm-left'><div>{coin.symbol}</div> <div>Inv. {Number(coin.inv.toFixed(2)).toLocaleString()}</div></td>
-                                <td className='cfm-right'><div style={{color: coin.pnl > 0 ? "green" : "red"}}>{Number(((coin.pnl) || 0).toFixed(2)).toLocaleString()} ({(((coin.pnl/coin.inv)*100).toFixed(2)).toLocaleString()}%)</div> <div>LTP: {(coin.ltp.toFixed(2)).toLocaleString()}</div></td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <PositionItem />
             </div>
         </div>
     )

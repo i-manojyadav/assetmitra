@@ -31,21 +31,14 @@
     width: fit-content;
 }
 
-.crypto-folio-mobo {
-    display: none;
-}
-
 .addCoinBtn {
     height: auto;
     display: flex;
     align-items: center;
 }
 
-
-/* Folio Table */
-
-.folio-action {
-    text-align: center;
+.crypto-folio {
+    width: 100%;
 }
 
 
@@ -68,38 +61,8 @@
         flex-direction: column;
     }
 
-    .folio-action i {
-        font-size: 17px;
-    }
-
     .add-coin-form button {
         width: fit-content;
         padding: 12px;
-    }
-
-    .crypto-folio {
-        display: none;
-    }
-
-    .crypto-folio-mobo {
-        display: block;
-    }
-
-    .crypto-folio-mobo td {
-        color: #c4c4c4;
-        font-size: 14px;
-    }
-
-    .cfm-left {
-        text-align: left;
-    }
-
-    .cfm-right {
-        text-align: right;
-    }
-
-    .cfm-left div,
-    .cfm-right div {
-        margin: 5px 0;
     }
 }

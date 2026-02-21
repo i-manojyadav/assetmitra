@@ -54,6 +54,7 @@ i {
 
 table {
     width: 100%;
+    font-size: 15px;
     margin: 10px 0;
     color: #ffffff;
     border-radius: 10px;
@@ -73,7 +74,7 @@ th {
 
 td {
     padding: 12px 10px;
-    background-color: #151515;
+    background-color: #111111;
 }
 
 ol {
@@ -92,7 +93,7 @@ input[type="number"] {
     color: #ffffff;
     padding: 15px 15px;
     border-radius: 5px;
-    background-color: #151515;
+    background-color: #111111;
     box-shadow: 0 0 2px rgb(145, 145, 145);
 }
 

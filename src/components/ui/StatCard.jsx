@@ -1,6 +1,6 @@
 import './StatCard.css'
 
-function StatCard({ color = false, title, value}) {
+function StatCard({ color = false, title, value, roi }) {
 
     let defaultColor = "white";
 
@@ -15,7 +15,7 @@ function StatCard({ color = false, title, value}) {
             </div>
             <div>
                 <p><b>{title}</b></p>
-                <p style={{color: defaultColor}}>{Number(value).toLocaleString()}</p>
+                <p style={{color: defaultColor}}>{Number(value).toLocaleString()} <span style={{display: roi !== undefined ? "inline-block" : "none"}}>({Number(Number(roi).toFixed(2)).toLocaleString()}%)</span></p>
             </div>
         </div>
     )
@@ -44,10 +44,10 @@ function StatCardMobo({ invested, current, pnl, roi, color }) {
             <span className='stat-card-border'></span>
             <div className='assetPnL'>
                 <div>
-                    <p>P&L</p>
+                    <p>P&L:</p>
                 </div>
                 <div>
-                    <p style={{color: defaultColor}}>{Number(pnl).toLocaleString()} <span>({roi}%)</span></p>
+                    <p className='folio-value' style={{color: defaultColor}}>{Number(pnl).toLocaleString()} <span>({Number(Number(roi).toFixed(2)).toLocaleString()}%)</span></p>
                 </div>
             </div>
         </div>

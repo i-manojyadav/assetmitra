@@ -46,10 +46,10 @@ export function CryptoContext({ children }) {
             return sum + coin.ltp * coin.qty
         }, 0);
 
-        invested = Number(invested.toFixed(2));
-        current = Number(current.toFixed(2));
-        let pnl = Number((current - invested).toFixed(2));
-        let roi = Number(((pnl/invested)*100).toFixed(2)).toLocaleString();
+        invested = Number(invested);
+        current = Number(current);
+        let pnl = Number((current - invested));
+        let roi = Number((pnl/invested)*100);
 
         setCryptoStats((stat) => {
             return {...stat, invested: invested, current: current, pnl: pnl, roi: roi}
