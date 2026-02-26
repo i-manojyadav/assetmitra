@@ -42,7 +42,7 @@ export default function PortfolioSummary() {
             <div className='trade-insights'>
                 <TradeInsightCard icon={"fa-solid fa-arrow-up-right-dots"} color={"#beffbe"} cardTitle={"Best Performers"} trades={
                     gainers.map((gainer) => (
-                        <tr>
+                        <tr key={gainer.key}>
                             <td>{gainer.symbol.toUpperCase()}</td>
                             <td>{Number(gainer.ltp.toFixed()).toLocaleString()}</td>
                             <td style={{color: "green"}}>{Number(gainer.pnl.toFixed(2)).toLocaleString()} ({Number(((gainer.pnl/gainer.inv)*100).toFixed(2)).toLocaleString()}%)</td>
@@ -52,7 +52,7 @@ export default function PortfolioSummary() {
 
                 <TradeInsightCard icon={"fa-solid fa-arrow-trend-down"} color={"#ffb3b3"} cardTitle={"Worst Performers"} trades={
                     losers.map((loser) => (
-                        <tr>
+                        <tr key={loser.key}>
                             <td>{loser.symbol.toUpperCase()}</td>
                             <td>{Number(loser.ltp.toFixed()).toLocaleString()}</td>
                             <td style={{color: "red"}}>{Number(loser.pnl.toFixed(2)).toLocaleString()} ({Number(((loser.pnl/loser.inv)*100).toFixed(2)).toLocaleString()}%)</td>

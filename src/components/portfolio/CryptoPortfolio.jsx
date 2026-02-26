@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import toast from 'react-hot-toast';
 import { CryptoPortfolioContext } from '../../context/CryptoPortfolioContext';
 import PositionItem from './PositionItem';
+import TradeDetailCard from '../ui/TradeDetailCard';
 
 export default function CryptoPortfolio() {
 
@@ -96,7 +97,7 @@ export default function CryptoPortfolio() {
                 </div>
             </div>
             <div className='crypto-folio'>
-                <PositionItem />
+                <PositionItem onAdd={addCoinToggle} />
             </div>
         </div>
     )

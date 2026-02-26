@@ -3,15 +3,18 @@
     width: 45%;
     z-index: 999;
     display: flex;
+    display: none;
     flex-direction: column;
-    padding: 10px 20px 20px 20px;
-    border-radius: 10px 10px 0 0;
-    background-color: #111111;
+    padding: 10px 25px 20px 25px;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #151515;
 }
 
-.asset {
+.asset-cont {
     width: 100%;
     display: flex;
+    padding: 7px 0;
+    margin-bottom: 10px;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #1f1f1f;
@@ -21,30 +24,26 @@
     width: 50%;
 }
 
-.close-card {
-    font-size: 18px;
+.close-card > button {
+    font-size: 22px;
+    color: #ff6565;
+    background-color: transparent;
+}
+
+.asset-cont p:nth-of-type(1) {
+    font-size: 16px;
     color: #ffffff;
-}
-
-.close-card i:hover {
-    color: #ff6363;
-}
-
-.asset p:nth-of-type(1) {
-    font-size: 18px;
-    color: #ffffff;
-    text-transform: uppercase;
-}
-
-.asset p:nth-of-type(2) {
-    font-size: 13px;
     text-transform: uppercase;
 }
 
 .asset-btn {
     display: flex;
-    display: none;
+    padding: 12px 0;
     justify-content: space-between;
+}
+
+.asset-btn button {
+    margin: 0;
 }
 
 .asset-btn button:nth-of-type(1) {
@@ -62,9 +61,22 @@
     border-radius: 5px;
 }
 
+.asset-title {
+    color: #c4c4c4;
+    font-size: 13px;
+}
+
+.asset-value {
+    color: #e1e1e1;
+    font-size: 14px;
+}
+
 .investment {
-    gap: 25px;
+    gap: 15px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
 }
 
 .investment-value {
@@ -79,6 +91,13 @@
 
 @media(max-width: 768px) {
     .trade-detail-card {
+        left: 0;
+        bottom: 0;
         width: 100%;
+        display: block;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 }

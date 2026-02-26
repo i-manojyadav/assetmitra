@@ -9,9 +9,6 @@ export default function StockPortfolio() {
                 <StatCard title="Current" value="25000" />
                 <StatCard title="Profit & Loss" value="25000" />
             </div>
-            <div>
-                <StatCardMobo />
-            </div>
         </div>
     )
 }

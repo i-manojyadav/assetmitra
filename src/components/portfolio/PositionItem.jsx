@@ -1,11 +1,13 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import './PositionItem.css'
 import { CryptoPortfolioContext } from '../../context/CryptoPortfolioContext.jsx'
 import toast from 'react-hot-toast';
+import TradeDetailCard from '../ui/TradeDetailCard.jsx';
 
-function PositionItem() {
+function PositionItem({ onAdd }) {
 
     const { folioCoins, setFolioCoins } = useContext(CryptoPortfolioContext);
+    const [ selectedCoin, setSelectedCoin ] = useState(null);
 
     // EXIT POSITION
     function exitPosition(position, key) {
@@ -49,12 +51,11 @@ function PositionItem() {
                 </table>
             </div>
 
-
             <div className='position-item-mobile'>
                 <table>
                     <tbody>
                         {folioCoins.map((item) => (
-                            <tr className='pim' key={item.key}>
+                            <tr onClick={() => setSelectedCoin(item)} className='pim' key={item.key}>
                                 <td className='pim-left'>
                                     <div className='asset-div'><span className='asset'>{item.symbol.toUpperCase()}</span></div>
                                     <div><span className='title'>Qty.</span> <span className='value'>{Number(item.qty).toLocaleString()}</span> | <span className='title'>Avg.</span> <span className='value'>{Number(item.avgBuy).toLocaleString()}</span></div>
@@ -67,6 +68,10 @@ function PositionItem() {
                         ))}
                     </tbody>
                 </table>
+            </div>
+
+            <div>
+                {selectedCoin && <TradeDetailCard coin={selectedCoin} onAdd={onAdd} onExit={() => exitPosition(selectedCoin.symbol, selectedCoin.key)} onClose={() => setSelectedCoin(null)} />}
             </div>
         </div>
     )
