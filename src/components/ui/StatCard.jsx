@@ -5,7 +5,7 @@ function StatCard({ color = false, title, value, roi }) {
     let defaultColor = "white";
 
     if (color) {
-        defaultColor = value > 0 ? "green" : "red";
+        defaultColor = value >= 0 ? "green" : "red";
     }
 
     return (

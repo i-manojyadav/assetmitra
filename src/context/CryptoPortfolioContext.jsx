@@ -56,6 +56,13 @@ export function CryptoContext({ children }) {
         });
     }, [folioCoins]);
 
+    // HANDLES EMPTY CRYPTOSTATS
+    useEffect(() => {
+        if (folioCoins.length === 0) {
+            setCryptoStats({invested: 0, current: 0, pnl: 0, roi: 0});
+        }
+    }, [folioCoins]);
+
 
     // UPDATING COINS PRICE LIVE
 
