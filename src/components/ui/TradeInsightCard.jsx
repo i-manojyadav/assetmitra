@@ -1,6 +1,6 @@
 import './TradeInsightCard.css'
 
-function TradeInsightCard({ cardTitle, trades }) {
+function TradeInsightCard({ cardTitle, th, trades }) {
 
     return (
         <div className='trade-insight-card'>
@@ -11,9 +11,9 @@ function TradeInsightCard({ cardTitle, trades }) {
                 <table>
                     <thead>
                         <tr>
-                            <th>Asset</th>
-                            <th>LTP</th>
-                            <th>P&L</th>
+                            {th.map((th, index) => {
+                                return <th key={index}>{th}</th>
+                            })}
                         </tr>
                     </thead>
                     <tbody>

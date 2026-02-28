@@ -40,7 +40,7 @@ function PositionItem({ onAdd }) {
                                 <td>{item.symbol.toUpperCase()}</td>
                                 <td>{Number(item.qty).toLocaleString()}</td>
                                 <td>{Number(item.avgBuy).toLocaleString()}</td>
-                                <td>{Number(item.inv).toLocaleString()}</td>
+                                <td>{Number(Number(item.inv).toFixed(2)).toLocaleString()}</td>
                                 <td>{Number(Number(item.cur).toFixed(2)).toLocaleString()}</td>
                                 <td>{Number(Number(item.ltp).toFixed(2)).toLocaleString()}</td>
                                 <td style={{color: item.pnl > 0 ? "green" : "red"}}>{Number(Number(item.pnl).toFixed(2)).toLocaleString()} ({(((item.pnl/item.inv)*100).toFixed(2)).toLocaleString()}%)</td>

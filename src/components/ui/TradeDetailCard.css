@@ -43,7 +43,10 @@
 }
 
 .asset-btn button {
+    width: 40%;
     margin: 0;
+    padding: 12px 25px;
+    border-radius: 5px;
 }
 
 .asset-btn button:nth-of-type(1) {
@@ -54,11 +57,6 @@
 .asset-btn button:nth-of-type(2) {
     color: #ffffff;
     background-color: #ff6363;
-}
-
-.asset-btn button {
-    width: 30%;
-    border-radius: 5px;
 }
 
 .asset-title {
