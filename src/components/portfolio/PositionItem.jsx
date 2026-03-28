@@ -15,7 +15,7 @@ function PositionItem({ onAdd }) {
             return coin.key != key;
         }));
 
-        toast.success(`${position}, Removed!`);
+        toast.success(`${position.toUpperCase()}, Removed!`);
     }
 
     return (

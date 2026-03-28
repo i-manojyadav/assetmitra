@@ -3,18 +3,35 @@ import StatCard, {StatCardMobo} from '../ui/StatCard'
 import TradeInsightCard from '../ui/TradeInsightCard'
 import { useContext, useEffect, useState } from 'react'
 import { CryptoPortfolioContext } from '../../context/CryptoPortfolioContext'
+import { FDPortfolioContext } from '../../context/FDPortfolioContext'
 
 export default function PortfolioSummary() {
 
     const { folioCoins, cryptoStats } = useContext(CryptoPortfolioContext);
+    const { fdFolio, fdStats } = useContext(FDPortfolioContext);
 
-    const [gainers, setGainers] = useState([]);
-    const [losers, setLosers] = useState([]);
+    const [ asset, setAsset ] = useState([]);
+    const [ gainers, setGainers ] = useState([]);
+    const [ losers, setLosers ] = useState([]);
+
+
+    useEffect(() => {
+        const assetInv = Number(fdStats.invested) + Number(cryptoStats.invested);
+        const assetPnL = Number(fdStats.fdProfit) + Number(cryptoStats.pnl);
+        const assetCur = Number(fdStats.current) + Number(cryptoStats.current);
+        const assetROI = (Number(assetPnL) / Number(assetInv)) * 100;
+
+        setAsset(() => {
+            return { invested: assetInv, current: assetCur, pnl: assetPnL, roi: assetROI }
+        });
+
+    }, [folioCoins]);
+
 
     useEffect(() => {
         const gainers = folioCoins.filter((gainer) => {
             return gainer.pnl > 0;
-        })
+        });
 
         setGainers(gainers);
 
@@ -31,12 +48,12 @@ export default function PortfolioSummary() {
         <div className='portfolio-summary'>
             <div className='summary-stats'>
                 <div className='summary-stats-desk'>
-                    <StatCard title={"Invested"} value={cryptoStats.invested} />
-                    <StatCard title={"Current"} value={cryptoStats.current} />
-                    <StatCard title={"Profit & Loss"} value={cryptoStats.pnl} roi={cryptoStats.roi} color={true} />
+                    <StatCard title={"Invested"} value={Number(asset.invested)} />
+                    <StatCard title={"Current"} value={Number(asset.current)} />
+                    <StatCard title={"Profit & Loss"} value={Number(asset.pnl)} roi={Number(asset.roi)} color={true} />
                 </div>
                 <div className='summary-stats-mobo'>
-                    <StatCardMobo invested={cryptoStats.invested} current={cryptoStats.current} pnl={cryptoStats.pnl} roi={cryptoStats.roi} color={true} />
+                    <StatCardMobo invested={Number(asset.invested)} current={Number(asset.current)} pnl={Number(asset.pnl)} roi={Number(asset.roi)} color={true} />
                 </div>
             </div>
             <div className='trade-insights'>

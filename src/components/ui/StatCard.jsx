@@ -44,7 +44,7 @@ function StatCardMobo({ invested, current, pnl, roi, color }) {
             <span className='stat-card-border'></span>
             <div className='assetPnL'>
                 <div>
-                    <p>P&L:</p>
+                    <p>P&L</p>
                 </div>
                 <div>
                     <p className='folio-value' style={{color: defaultColor}}>{Number(pnl).toLocaleString()} <span>({Number(Number(roi).toFixed(2)).toLocaleString()}%)</span></p>

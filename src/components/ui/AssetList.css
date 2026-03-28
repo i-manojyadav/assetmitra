@@ -1,0 +1,33 @@
+.assetlist-desktop {
+    display: 100%;
+}
+
+.assetlist-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .assetlist-desktop {
+        display: none;
+    }
+
+    .assetlist-mobile {
+        display: block;
+    }
+
+    .asset-data td {
+        padding: 15px 10px;
+    }
+
+    .asset-sec {
+        margin-bottom: 5px;
+    }
+
+    .asset-data-left {
+        text-align: left;
+    }
+
+    .asset-data-right {
+        text-align: right;
+    }
+}

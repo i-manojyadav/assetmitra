@@ -5,11 +5,13 @@ import Sidebar from './Sidebar.jsx';
 import { Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { CryptoContext } from '../../context/CryptoPortfolioContext.jsx';
+import { FDContext } from '../../context/FDPortfolioContext.jsx';
 
 function Layout() {
     return (
         <>
         <CryptoContext>
+            <FDContext>
         <Toaster position="top-center" />
         <div className='layout'>
             <Header />
@@ -24,6 +26,7 @@ function Layout() {
             </div>
             <Footer />
         </div>
+            </FDContext>
         </CryptoContext>
         </>
     )
