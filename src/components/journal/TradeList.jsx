@@ -76,8 +76,8 @@ function TradeList({ journal }) {
                     <div style={{borderLeft: calculatePnL(trade) > 0 ? "4px solid #00e5a070" : "4px solid #ff456070"}} key={trade.key} className='trade-card-mobile'>
                         <div className='trade-info'>
                             <div className='trade-symbol-pnl'>
-                                <p><span>{trade.symbol.toUpperCase()}</span> <span className='typeBuy'>{trade.type}</span></p>
-                                <p style={{color: calculatePnL(trade) > 0 ? "#00e5a0" : "#ff4560"}}>{Number(calculatePnL(trade)).toLocaleString()}</p>
+                                <p><span>{trade.symbol.toUpperCase()}</span> <span className={trade.type === "buy" ? "typeBuy" : "typeSell"}>{trade.type}</span></p>
+                                <p style={{color: calculatePnL(trade) > 0 ? "#00e5a0" : "#ff4560"}}>{calculatePnL(trade).toLocaleString()}</p>
                             </div>
                             <div className='trade-price'>
                                 <div>
