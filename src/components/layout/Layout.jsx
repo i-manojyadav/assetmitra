@@ -6,12 +6,14 @@ import { Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { CryptoContext } from '../../context/CryptoPortfolioContext.jsx';
 import { FDContext } from '../../context/FDPortfolioContext.jsx';
+import { JournalProvider } from '../../context/JournalContext.jsx';
 
 function Layout() {
     return (
         <>
         <CryptoContext>
             <FDContext>
+                <JournalProvider>
         <Toaster position="top-center" />
         <div className='layout'>
             <Header />
@@ -26,6 +28,7 @@ function Layout() {
             </div>
             <Footer />
         </div>
+                </JournalProvider>
             </FDContext>
         </CryptoContext>
         </>

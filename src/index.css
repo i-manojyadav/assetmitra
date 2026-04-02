@@ -56,23 +56,26 @@ table {
     width: 100%;
     font-size: 15px;
     margin: 10px 0;
-    color: #ffffff;
-    border-radius: 10px;
+    color: #c4c4c4;
     overflow: hidden;
+    text-transform: uppercase;
     border-collapse: collapse;
 }
 
 tr {
-    border: 2px solid #1f1f1f;
+    border: 1px solid #1f1f1f;
 }
 
 th {
-    padding: 15px 10px;
+    font-weight: 500;
+    padding: 12px 10px;
     text-align: left;
     text-transform: uppercase;
 }
 
 td {
+    width: fit-content;
+    font-size: 14px;
     padding: 12px 10px;
     background-color: #111111;
 }
@@ -82,50 +85,66 @@ ol {
 }
 
 label {
-    font-weight: 500;
-    color: #ffffff;
-    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff47;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 input[type="text"],
 input[type="number"],
 input[type="search"],
-input[type="date"] {
+input[type="date"],
+input[type="datetime-local"] {
     border: none;
-    color: #ffffff;
+    color: #e8eeff;
     padding: 15px 15px;
     border-radius: 5px;
     background-color: #111111;
-    box-shadow: 0 0 2px rgb(145, 145, 145);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+input[type="datetime-local"]::-webkit-datetime-edit {
+    color: #ffffff2e;
+}
+
+input[type="datetime-local"]:valid::-webkit-datetime-edit {
+    color: #e8eeff;
 }
 
 input::placeholder {
-    color: #c4c4c4;
+    color: #ffffff2e;
 }
 
 input:focus {
-    outline: none;
+    outline: #00d4b414;
 }
 
 select {
     border: none;
-    color: #ffffff;
+    color: #ffffff2e;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 10px;
     background-color: #111111;
-    box-shadow: 0 0 2px rgb(145, 145, 145);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
 select:focus {
-    outline: none;
+    outline: #e8eeff;
 }
 
 option {
     border: none;
-    color: #ffffff;
+    color: #e8eeff;
     background-color: #111111;
 }
 
