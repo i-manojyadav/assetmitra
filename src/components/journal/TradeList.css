@@ -8,7 +8,6 @@
 
 .trade-list-mobile {
     gap: 25px;
-    margin: 25px 0;
     display: flex;
     display: none;
     flex-direction: column;

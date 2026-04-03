@@ -126,6 +126,7 @@
 
 .trade-qty-sl {
     gap: 25px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -145,9 +146,17 @@
 .trade-charges,
 .trade-datetime {
     gap: 10px;
-    width: 45%;
+    width: 50%;
     display: flex;
     flex-direction: column;
+}
+
+.trade-charges > input[type="number"] {
+    width: 100%;
+}
+
+.trade-datetime > input[type="datetime-local"] {
+    width: 100%;
 }
 
 .trade-notes {
