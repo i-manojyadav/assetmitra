@@ -128,12 +128,12 @@ input:focus {
 
 select {
     border: none;
-    color: #ffffff2e;
+    color: #ffffff93;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     padding: 5px 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #111111;
     box-shadow: 0 0 1px rgba(255, 255, 255, 0.8);
 }

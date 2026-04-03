@@ -3,6 +3,7 @@ import './TradeList.css'
 
 function TradeList({ journal }) {
 
+    const [ trades, setTrades ] = useState(journal.trades);
     const [ isActive, setIsActive ] = useState(false);
 
 
@@ -23,6 +24,7 @@ function TradeList({ journal }) {
         const charges = Number(trade.charges);
         const qty = Number(trade.qty);
         const type = trade.type?.trim().toLowerCase();
+        const tradeKey = trade.key
 
         let tradePnL = 0;
 
@@ -37,14 +39,113 @@ function TradeList({ journal }) {
         let tradeROI = (tradePnL / (entry * qty)) * 100;
 
         return {
-            tradePnL, tradeROI
+            tradePnL, tradeROI, tradeKey
         }
+    }
+
+    //TRADE OUTCOME
+    function tradeOutcome(trade, value) {
+
+        const { tradePnL } = calculatePnL(trade);
+
+        let key;
+
+        if (value === "loss" && tradePnL < 0) {
+            key = trade.key;
+
+        } else if (value === "profit" && tradePnL > 0) {
+            key = trade.key;
+
+        } else if (value = "breakeven" && tradePnL === 0) {
+            key = trade.key;
+
+        } else {
+            key = undefined;
+        }
+
+        return {
+            key
+        }
+    }
+
+    // HANDLE FILTER change
+    function onFilterChange(e) {
+        const filterName = e.target.name;
+        const filterValue = e.target.value;
+
+        let filteredTrades;
+
+        if (filterName === "type" || filterName === "tradingStyle" || filterName === "strategy") {
+            filteredTrades = journal.trades.filter((trade) => {
+                return trade[filterName] === filterValue;
+            });
+
+        } else if (filterName === "outcome") {
+            filteredTrades = journal.trades.filter((trade) => {
+                const { key } = tradeOutcome(trade, filterValue);
+                return trade.key === key;
+            });
+            
+        } else {
+            filteredTrades = journal.trades;
+        }
+
+        setTrades(filteredTrades);
+
+        document.querySelectorAll("select").forEach((s) => {
+            if (s !== e.target) s.selectedIndex = 0;
+        });
+
     }
 
 
 
     return (
         <div className='trade-list'>
+            <div className='trade-filters'>
+                <p><b>Filter:</b></p>
+
+                <div>
+                    <button className='all-trades-btn' onClick={() => setTrades(journal.trades)}>All</button>
+                </div>
+
+                <div>
+                    <select name='type' onChange={onFilterChange}> 
+                        <option value='' disabled selected>Type</option>
+                        <option value='buy' name='type'>Buy</option>
+                        <option value='sell' name='type'>Sell</option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name='tradingStyle' onChange={onFilterChange}>
+                        <option value='' disabled selected>Trading Style</option>
+                        <option value='swing'>Swing</option>
+                        <option value='intraday'>Intraday</option>
+                        <option value='scalping'>Scalping</option>
+                        <option value='positional'>Positional</option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name='strategy' onChange={onFilterChange}>
+                        <option value='' disabled selected>Strategy</option>
+                        <option value='strategy 1'>Strategy 1</option>
+                        <option value='strategy 2'>Strategy 2</option>
+                        <option value='strategy 3'>Strategy 3</option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name='outcome' onChange={onFilterChange}>
+                        <option value='' disabled selected>Outcome</option>
+                        <option value='loss'>Loss</option>
+                        <option value='profit'>Profit</option>
+                        <option value='breakeven'>Breakeven</option>
+                    </select>
+                </div>
+            </div>
+
             <div className='trade-list-desktop'>
                 <table>
                     <thead>
@@ -61,7 +162,7 @@ function TradeList({ journal }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {journal.trades.map((trade) => {
+                        {trades.map((trade) => {
 
                             const { tradePnL, tradeROI } = calculatePnL(trade);
 
@@ -86,7 +187,7 @@ function TradeList({ journal }) {
             </div>
 
             <div className='trade-list-mobile'>
-                {journal.trades.map((trade) => {
+                {trades.map((trade) => {
 
                     const { tradePnL, tradeROI } = calculatePnL(trade);
 

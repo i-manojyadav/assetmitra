@@ -53,6 +53,11 @@
     letter-spacing: 0.18em;
 }
 
+.stat-roi-badge {
+    font-size: 17px;
+    font-weight: 700;
+}
+
 
 @media(max-width: 768px) {
 

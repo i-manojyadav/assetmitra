@@ -2,6 +2,26 @@
     width: 100%;
 }
 
+.trade-filters {
+    width: 100%;
+    gap: 15px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    align-items: center;
+}
+
+.all-trades-btn {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #ffffff93;
+    background-color: #111111;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
 .trade-list-desktop {
     width: 100%;
 }
@@ -46,6 +66,12 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.trade-symbol-pnl > p:nth-of-type(1) {
+    gap: 8px;
+    display: flex;
+    align-items: center;
 }
 
 .trade-price {
@@ -119,6 +145,10 @@
 }
 
 @media(max-width: 768px) {
+
+    .trade-filters {
+        overflow-x: scroll;
+    }
     .trade-list-desktop {
         display: none;
     }

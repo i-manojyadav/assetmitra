@@ -64,8 +64,10 @@ function JournalStats( {journal} ) {
             return sum + (Number(trade.entryPrice) * Number(trade.qty));
         }, 0);
 
+        const roi = (netPnL / invested) * 100;
+
         setJournalStats(() => {
-            return { grossPnL: grossPnL, netPnL: netPnL, winRate: winRate, invested: invested, charges: charges }
+            return { grossPnL: grossPnL, netPnL: netPnL, roi: roi, winRate: winRate, invested: invested, charges: charges }
         });
         
     }, [journal.trades.length]);
@@ -82,7 +84,7 @@ function JournalStats( {journal} ) {
             </div>
             <div className='journal-stats-card'>
                 <p className='trade-title'>Net P&L</p>
-                <p className='trade-value'>{Number(journalStats.netPnL).toLocaleString()}</p>
+                <p className='trade-value'>{Number(journalStats.netPnL).toLocaleString()} <span className='stat-roi-badge'>({Number(Number(journalStats.roi).toFixed(2)).toLocaleString()}%)</span></p>
                 <p className='sub-title'>After all charges</p>
             </div>
             <div className='journal-stats-card'>
