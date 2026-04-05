@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import './JournalStats.css'
-import { JournalContext } from '../../context/JournalContext';
 
 function JournalStats({ trades }) {
 
@@ -14,9 +13,9 @@ function JournalStats({ trades }) {
             const exit = Number(trade.exitPrice);
             const qty = Number(trade.qty);
 
-            const type = trade.type.toLowerCase() === "buy" ? 1 : -1;
+            const side = trade.side.toLowerCase() === "buy" ? 1 : -1;
 
-            const pnl = (exit - entry) * qty * type;
+            const pnl = (exit - entry) * qty * side;
 
             return sum + pnl;
 
@@ -39,9 +38,9 @@ function JournalStats({ trades }) {
                 const exit = Number(trade.exitPrice);
                 const qty = Number(trade.qty);
 
-                const type = trade.type?.toLowerCase() === "buy" ? 1 : -1;
+                const side = trade.side?.toLowerCase() === "buy" ? 1 : -1;
 
-                const pnl = (exit -entry) * qty * type;
+                const pnl = (exit -entry) * qty * side;
 
                 if (pnl > 0) {
                     return sum + 1;

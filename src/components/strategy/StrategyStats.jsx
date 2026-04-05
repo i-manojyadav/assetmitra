@@ -31,9 +31,9 @@ function StrategyStats({ strategy }) {
             const exit = Number(trade.exitPrice);
             const qty = Number(trade.qty);
 
-            const type = trade.type.toLowerCase() === "buy" ? 1 : -1;
+            const side = trade.side.toLowerCase() === "buy" ? 1 : -1;
 
-            const pnl = (exit - entry) * qty * type;
+            const pnl = (exit - entry) * qty * side;
 
             return sum + pnl;
         }, 0);
@@ -54,9 +54,9 @@ function StrategyStats({ strategy }) {
                 const exit = Number(trade.exitPrice);
                 const qty = Number(trade.qty);
 
-                const type = trade.type?.toLowerCase() === "buy" ? 1 : -1;
+                const side = trade.side?.toLowerCase() === "buy" ? 1 : -1;
 
-                const pnl = (exit -entry) * qty * type;
+                const pnl = (exit -entry) * qty * side;
 
                 if (pnl > 0) {
                     return sum + 1;
@@ -76,12 +76,13 @@ function StrategyStats({ strategy }) {
             const entry = Number(trade.entryPrice);
             const exit = Number(trade.exitPrice);
             const qty = Number(trade.qty);
-            const type = trade.type.toLowerCase();
+            const charges = Number(trade.charges);
+            const side = trade.side.toLowerCase();
 
-            if (type === "buy") {
-                return (exit - entry) * qty;
-            } else if(type === "sell") {
-                return (entry - exit ) * qty;
+            if (side === "buy") {
+                return ((exit - entry) * qty) - charges;
+            } else if(side === "sell") {
+                return ((entry - exit ) * qty) - charges;
             }
         }
 

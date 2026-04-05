@@ -138,7 +138,7 @@ function Strategy() {
                                 </div>
                                 <div>
                                     <p>R : R</p>
-                                    <p>1:3</p>
+                                    <p>1: {(Number(strategy.target) / Number(strategy.stopLoss)).toFixed()}</p>
                                 </div>
                             </div>
 

@@ -12,8 +12,8 @@ function AddTrade({ journalKey }) {
 
     const [ addTrade, setAddTrade ] = useState({
         symbol: "",
+        side: "",
         type: "",
-        tradingStyle: "",
         strategy: "",
         entryPrice: "",
         exitPrice: "",
@@ -48,13 +48,12 @@ function AddTrade({ journalKey }) {
         e.preventDefault();
         
         journalTrade(addTrade, journalKey);
-
-        toast.success(`${addTrade.symbol.toUpperCase()} Trade Added Successfully!`)
+        toast.success("Trade added successfully");
 
         setAddTrade({
             symbol: "",
+            side: "",
             type: "",
-            tradingStyle: "",
             strategy: "",
             entryPrice: "",
             exitPrice: "",
@@ -103,15 +102,15 @@ function AddTrade({ journalKey }) {
                             <input type='text' placeholder='Enter Symbol' value={addTrade.symbol} name='symbol' onChange={handleChange} required />
                         </div>
                         <div className='trade-type'>
-                            <label><input type='radio' value='buy' name='type' checked={addTrade.type === "buy"} onChange={handleChange} required />Buy</label>
-                            <label><input type='radio' value='sell' name='type' checked={addTrade.type === "sell"} onChange={handleChange} required />Sell</label>
+                            <label><input type='radio' value='buy' name='side' checked={addTrade.side === "buy"} onChange={handleChange} required />Buy</label>
+                            <label><input type='radio' value='sell' name='side' checked={addTrade.side === "sell"} onChange={handleChange} required />Sell</label>
                         </div>
                     </div>
 
                     <div className='trade-style-strategy'>
                         <div className='trade-style'>
-                            <label>Trading Style</label>
-                            <select value={addTrade.tradingStyle} name='tradingStyle' onChange={handleChange} required >
+                            <label>Trade Type</label>
+                            <select value={addTrade.type} name='type' onChange={handleChange} required >
                                 <option value="" disabled>Select</option>
                                 <option value="swing" >Swing</option>
                                 <option value="intraday" >Intraday</option>
@@ -155,7 +154,7 @@ function AddTrade({ journalKey }) {
 
                     <div className='trade-notes'>
                         <label>Trade Notes</label>
-                        <input type='text' placeholder='Enter Trade Notes' value={addTrade.notes} name='notes' onChange={handleChange} required />
+                        <input type='text' placeholder='Why did you take this trade?' value={addTrade.notes} name='notes' onChange={handleChange} required />
                     </div>
 
                     <button className='log-trade-btn'>Log Trade</button>

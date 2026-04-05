@@ -47,7 +47,7 @@ function Journal() {
             return [...prev, createJournal];
         });
 
-        toast.success(`${createJournal.name.toUpperCase()} Journal Added Successfully!`)
+        toast.success("Journal created successfully");
 
         setCreateJournal({
             name: "",

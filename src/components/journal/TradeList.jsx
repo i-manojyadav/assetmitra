@@ -1,26 +1,19 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './TradeList.css'
 import { StrategyContext } from '../../context/StrategyContext';
 import JournalStats from './JournalStats';
 
 function TradeList({ journal }) {
 
-    const [ trades, setTrades ] = useState(journal.trades);
+    const [ trades, setTrades ] = useState([]);
     const [ isActive, setIsActive ] = useState(false);
 
     const { strategies } = useContext(StrategyContext);
 
-    console.log(trades);
-
-
-    //TOGGLE
-    function toggle() {
-        if (isActive === false) {
-            setIsActive(true);
-        } else {
-            setIsActive(false);
-        }
-    }
+    // UPDATE SELECTED JOURNAL
+    useEffect(() => {
+        setTrades(journal.trades);
+    }, [journal]);
 
     //CALCULATE PROFIT & LOSS
     function calculatePnL(trade) {
@@ -29,14 +22,14 @@ function TradeList({ journal }) {
         const exit = Number(trade.exitPrice);
         const charges = Number(trade.charges);
         const qty = Number(trade.qty);
-        const type = trade.type?.trim().toLowerCase();
+        const side = trade.side?.trim().toLowerCase();
         const tradeKey = trade.key
 
         let tradePnL = 0;
 
-        if (type === "buy") {
+        if (side === "buy") {
             tradePnL = ((exit - entry) * qty) - charges;
-        } else if (type === "sell") {
+        } else if (side === "sell") {
             tradePnL = ((entry - exit) * qty) - charges;
         } else {
             tradePnL = "NA";
@@ -81,7 +74,7 @@ function TradeList({ journal }) {
 
         let filteredTrades;
 
-        if (filterName === "type" || filterName === "tradingStyle" || filterName === "strategy") {
+        if (filterName === "side" || filterName === "type" || filterName === "strategy") {
             filteredTrades = journal.trades.filter((trade) => {
                 return trade[filterName] === filterValue;
             });
@@ -120,16 +113,16 @@ function TradeList({ journal }) {
                 </div>
 
                 <div>
-                    <select name='type' onChange={onFilterChange}> 
-                        <option value='' disabled>Type</option>
-                        <option value='buy' name='type'>Buy</option>
-                        <option value='sell' name='type'>Sell</option>
+                    <select name='side' onChange={onFilterChange}> 
+                        <option value='' disabled>Side</option>
+                        <option value='buy' name='side'>Buy</option>
+                        <option value='sell' name='side'>Sell</option>
                     </select>
                 </div>
 
                 <div>
-                    <select name='tradingStyle' onChange={onFilterChange}>
-                        <option value='' disabled>Trading Style</option>
+                    <select name='type' onChange={onFilterChange}>
+                        <option value='' disabled>Type</option>
                         <option value='swing'>Swing</option>
                         <option value='intraday'>Intraday</option>
                         <option value='scalping'>Scalping</option>
@@ -161,12 +154,12 @@ function TradeList({ journal }) {
                     <thead>
                         <tr>
                             <th>Symbol</th>
-                            <th>Type</th>
+                            <th>Side</th>
                             <th>Entry</th>
                             <th>Exit</th>
                             <th>Qty</th>
                             <th>SL</th>
-                            <th>Style</th>
+                            <th>Type</th>
                             <th>Charges</th>
                             <th>Net P&L</th>
                         </tr>
@@ -180,12 +173,12 @@ function TradeList({ journal }) {
                                 <>
                                 <tr>
                                     <td>{trade.symbol}</td>
-                                    <td><span className={trade.type === "buy" ? "typeBuy" : "typeSell"}>{trade.type}</span></td>
+                                    <td><span className={trade.side === "buy" ? "typeBuy" : "typeSell"}>{trade.side}</span></td>
                                     <td>{Number(trade.entryPrice).toLocaleString()}</td>
                                     <td>{Number(trade.exitPrice).toLocaleString()}</td>
                                     <td>{Number(trade.qty).toLocaleString()}</td>
                                     <td>{Number(trade.stopLoss).toLocaleString()}</td>
-                                    <td>{trade.tradingStyle}</td>
+                                    <td>{trade.type}</td>
                                     <td>{Number(trade.charges).toLocaleString()}</td>
                                     <td style={{color: tradePnL > 0? "#00e5a0" : "#ff4560"}}>{(tradePnL).toLocaleString()} ({tradeROI.toFixed(2)}%)</td>
                                 </tr>
@@ -205,7 +198,7 @@ function TradeList({ journal }) {
                         <div style={{borderLeft: tradePnL > 0 ? "4px solid #00e5a070" : "4px solid #ff456070"}} key={trade.key} className='trade-card-mobile'>
                             <div className='trade-info'>
                                 <div className='trade-symbol-pnl'>
-                                    <p><span>{trade.symbol.toUpperCase()}</span> <span className={trade.type === "buy" ? "typeBuy" : "typeSell"}>{trade.type}</span></p>
+                                    <p><span>{trade.symbol.toUpperCase()}</span> <span className={trade.side === "buy" ? "typeBuy" : "typeSell"}>{trade.side}</span></p>
                                     <p style={{color: tradePnL > 0 ? "#00e5a0" : "#ff4560"}}>{tradePnL.toLocaleString()} ({tradeROI.toFixed(2)}%)</p>
                                 </div>
                                 <div className='trade-price'>
@@ -228,7 +221,7 @@ function TradeList({ journal }) {
                                 </div>
                                 <div className='trd-type-date'>
                                     <div>
-                                        <p className='trade-style-badge'>{trade.tradingStyle.toUpperCase()}</p>
+                                        <p className='trade-style-badge'>{trade.type.toUpperCase()}</p>
                                     </div>
                                     <div>
                                         <p className='trd-value'>{trade.strategy.toUpperCase()}</p>
