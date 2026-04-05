@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import { CryptoContext } from '../../context/CryptoPortfolioContext.jsx';
 import { FDContext } from '../../context/FDPortfolioContext.jsx';
 import { JournalProvider } from '../../context/JournalContext.jsx';
+import { StrategyProvider } from '../../context/StrategyContext.jsx';
 
 function Layout() {
     return (
@@ -14,6 +15,7 @@ function Layout() {
         <CryptoContext>
             <FDContext>
                 <JournalProvider>
+                    <StrategyProvider>
         <Toaster position="top-center" />
         <div className='layout'>
             <Header />
@@ -28,6 +30,7 @@ function Layout() {
             </div>
             <Footer />
         </div>
+                    </StrategyProvider>
                 </JournalProvider>
             </FDContext>
         </CryptoContext>

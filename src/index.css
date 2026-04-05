@@ -53,9 +53,9 @@ i {
 }
 
 table {
+    margin: 0;
     width: 100%;
     font-size: 15px;
-    margin: 10px 0;
     color: #c4c4c4;
     overflow: hidden;
     text-transform: uppercase;

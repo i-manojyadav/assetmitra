@@ -2,15 +2,13 @@ import { useContext, useEffect, useState } from 'react';
 import './JournalStats.css'
 import { JournalContext } from '../../context/JournalContext';
 
-function JournalStats( {journal} ) {
-
-    const { journals } = useContext(JournalContext);
+function JournalStats({ trades }) {
 
     const [ journalStats, setJournalStats ] = useState([]);
 
     useEffect(() => {
 
-        const grossPnL = journal.trades.reduce((sum, trade) => {
+        const grossPnL = trades.reduce((sum, trade) => {
 
             const entry = Number(trade.entryPrice);
             const exit = Number(trade.exitPrice);
@@ -24,19 +22,19 @@ function JournalStats( {journal} ) {
 
         }, 0);
 
-        const charges = journal.trades.reduce((sum, trade) => {
+        const charges = trades.reduce((sum, trade) => {
             return sum + Number(trade.charges);
         }, 0);
 
         const netPnL = grossPnL - charges;
 
-        const calWinRate = (journal) => {
+        const calWinRate = (trades) => {
 
-            if (!journal?.trades || journal.trades.length === 0) {
+            if (trades.length === 0) {
                 return 0;
             }
 
-            const wins = journal.trades.reduce((sum, trade) => {
+            const wins = trades.reduce((sum, trade) => {
                 const entry = Number(trade.entryPrice);
                 const exit = Number(trade.exitPrice);
                 const qty = Number(trade.qty);
@@ -52,15 +50,15 @@ function JournalStats( {journal} ) {
                 return sum;
             }, 0);
 
-            const tradeWins = (wins / journal.trades.length) * 100;
+            const tradeWins = (wins / trades.length) * 100;
 
             return tradeWins;
         }
 
-        const winRate = calWinRate(journal);
+        const winRate = calWinRate(trades);
 
 
-        const invested = journal.trades.reduce((sum, trade) => {
+        const invested = trades.reduce((sum, trade) => {
             return sum + (Number(trade.entryPrice) * Number(trade.qty));
         }, 0);
 
@@ -70,39 +68,38 @@ function JournalStats( {journal} ) {
             return { grossPnL: grossPnL, netPnL: netPnL, roi: roi, winRate: winRate, invested: invested, charges: charges }
         });
         
-    }, [journal.trades.length]);
-
+    }, [trades.length]);
 
 
 
     return (
         <div className='journal-stats'>
-            <div className='journal-stats-card'>
+            <div className='journal-stat-card'>
                 <p className='trade-title'>Gross P&L</p>
                 <p className='trade-value'>{Number(journalStats.grossPnL).toLocaleString()}</p>
                 <p className='sub-title'>Before Charges</p>
             </div>
-            <div className='journal-stats-card'>
+            <div className='journal-stat-card'>
                 <p className='trade-title'>Net P&L</p>
                 <p className='trade-value'>{Number(journalStats.netPnL).toLocaleString()} <span className='stat-roi-badge'>({Number(Number(journalStats.roi).toFixed(2)).toLocaleString()}%)</span></p>
                 <p className='sub-title'>After all charges</p>
             </div>
-            <div className='journal-stats-card'>
+            <div className='journal-stat-card'>
                 <p className='trade-title'>Win Rate</p>
                 <p className='trade-value'>{(Number(journalStats.winRate).toFixed(2)).toLocaleString()}%</p>
                 <p className='sub-title'>Win Rate %</p>
             </div>
-            <div className='journal-stats-card'>
+            <div className='journal-stat-card'>
                 <p className='trade-title'>Total Trades</p>
-                <p className='trade-value'>{Number(journal.trades.length).toLocaleString()}</p>
+                <p className='trade-value'>{Number(trades.length).toLocaleString()}</p>
                 <p className='sub-title'>No. of total trades</p>
             </div>
-            <div className='journal-stats-card'>
+            <div className='journal-stat-card'>
                 <p className='trade-title'>Total Invested</p>
                 <p className='trade-value'>{Number(journalStats.invested).toLocaleString()}</p>
                 <p className='sub-title'>Capital deployed</p>
             </div>
-            <div className='journal-stats-card'>
+            <div className='journal-stat-card'>
                 <p className='trade-title'>Total Charges</p>
                 <p className='trade-value'>{Number(journalStats.charges).toLocaleString()}</p>
                 <p className='sub-title'>Brokerage + STT, etc.</p>

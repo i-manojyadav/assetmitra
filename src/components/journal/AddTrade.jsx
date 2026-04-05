@@ -3,10 +3,12 @@ import './AddTrade.css'
 import { v4 as uuidv4 } from 'uuid';
 import { JournalContext } from '../../context/JournalContext';
 import toast from 'react-hot-toast';
+import { StrategyContext } from '../../context/StrategyContext';
 
 function AddTrade({ journalKey }) {
 
     const { journals, setJournals } = useContext(JournalContext);
+    const { strategies } = useContext(StrategyContext);
 
     const [ addTrade, setAddTrade ] = useState({
         symbol: "",
@@ -101,8 +103,8 @@ function AddTrade({ journalKey }) {
                             <input type='text' placeholder='Enter Symbol' value={addTrade.symbol} name='symbol' onChange={handleChange} required />
                         </div>
                         <div className='trade-type'>
-                            <label><input type='radio' value='buy' name='type' onChange={handleChange} required />Buy</label>
-                            <label><input type='radio' value='sell' name='type' onChange={handleChange} required />Sell</label>
+                            <label><input type='radio' value='buy' name='type' checked={addTrade.type === "buy"} onChange={handleChange} required />Buy</label>
+                            <label><input type='radio' value='sell' name='type' checked={addTrade.type === "sell"} onChange={handleChange} required />Sell</label>
                         </div>
                     </div>
 
@@ -110,7 +112,7 @@ function AddTrade({ journalKey }) {
                         <div className='trade-style'>
                             <label>Trading Style</label>
                             <select value={addTrade.tradingStyle} name='tradingStyle' onChange={handleChange} required >
-                                <option value="" disabled selected>Select</option>
+                                <option value="" disabled>Select</option>
                                 <option value="swing" >Swing</option>
                                 <option value="intraday" >Intraday</option>
                                 <option value="scalping" >Scalping</option>
@@ -121,10 +123,10 @@ function AddTrade({ journalKey }) {
                         <div className='trade-strategy'>
                             <label>Trading Strategy</label>
                             <select value={addTrade.strategy} name='strategy' onChange={handleChange} required >
-                                <option value="" disabled selected>Select</option>
-                                <option value="strategy 1" >Strategy 1</option>
-                                <option value="strategy 2" >Strategy 2</option>
-                                <option value="strategy 3" >Strategy 3</option>
+                                <option value="" disabled>Select</option>
+                                {strategies.map((strategy, idx) => {
+                                    return <option value={strategy.name} key={idx}>{strategy.name}</option>
+                                })}
                             </select>
                         </div>
                     </div>

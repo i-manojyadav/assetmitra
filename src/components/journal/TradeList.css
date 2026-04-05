@@ -1,5 +1,8 @@
 .trade-list {
+    gap: 20px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .trade-filters {

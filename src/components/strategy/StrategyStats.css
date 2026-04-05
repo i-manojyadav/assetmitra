@@ -1,4 +1,4 @@
-.journal-stats {
+.strategy-stats {
     gap: 15px;
     width: 100%;
     display: flex;
@@ -7,7 +7,7 @@
     justify-content: space-between;
 }
 
-.journal-stat-card {
+.strategy-stat-card {
     width: 32%;
     background: #141414;
     border: 1px solid #232323;
@@ -21,14 +21,13 @@
     animation: fadeUp 0.5s ease both;
 }
 
-.journal-stat-card:hover {
+.strategy-stat-card:hover {
     border-color: #3a3a3a;
     background: #1a1a1a;
     transform: translateY(-1px);
 }
 
-
-.trade-title {
+.s-title {
     color: #6b6b6b;
     font-size: 12px;
     font-weight: 600;
@@ -37,7 +36,7 @@
     text-transform: uppercase;
 }
 
-.trade-value {
+.s-value {
     font-size: 30px;
     font-weight: 800;
     letter-spacing: -0.02em;
@@ -45,7 +44,7 @@
     color: #f0f0f0;
 }
 
-.sub-title {
+.s-sub-title {
     color: #6b6b6b;
     font-size: 11px;
     font-weight: 500;
@@ -53,15 +52,8 @@
     letter-spacing: 0.18em;
 }
 
-.stat-roi-badge {
-    font-size: 17px;
-    font-weight: 700;
-}
-
-
-@media(max-width: 768px) {
-
-    .journal-stats {
+@media (max-width: 768px) {
+    .strategy-stats {
         gap: 10px;
         width: 100%;
         display: flex;
@@ -69,19 +61,19 @@
         justify-content: space-between;
     }
 
-    .journal-stats-card {
+    .strategy-stat-card {
         width: 48%;
     }
 
-    .trade-title {
+    .s-title {
         font-size: 10px;
     }
 
-    .trade-value {
+    .s-value {
         font-size: 22px;
     }
 
-    .sub-title {
+    .s-sub-title {
         font-size: 10px;
     }
 }

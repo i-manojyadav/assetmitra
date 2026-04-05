@@ -6,6 +6,7 @@ function Sidebar() {
         <div className='sidebar'>
             <NavLink to="/" className={({isActive}) => isActive? "active" : "not-active"}><i className="fa-solid fa-house"></i><span>Dashboard</span></NavLink>
             <NavLink to="/portfolio" className={({isActive}) => isActive? "active" : "not-active"}><i className="fa-solid fa-suitcase"></i> <span>Portfolio</span></NavLink>
+            <NavLink to="/strategy" className={({isActive}) => isActive? "active" : "not-active"}><i className="fa-solid fa-bullseye"></i><span>Strategy</span></NavLink>
             <NavLink to="/journal" className={({isActive}) => isActive? "active" : "not-active"}><i className="fa-solid fa-book"></i> <span>Journal</span></NavLink>
         </div>
     )

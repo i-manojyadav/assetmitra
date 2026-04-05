@@ -96,9 +96,6 @@ function Journal() {
                     )
                 }) : <EmptyState msg={{title: "No Journals Found", desc: "Create your first Journal"}} />} 
             </div>
-            <div className='stats'>
-                {selectedJournal && <JournalStats journal={selectedJournal[0]} />}
-            </div>
             <div>
                 {selectedJournal && <AddTrade journalKey={selectedJournal[0].key} />}
             </div>

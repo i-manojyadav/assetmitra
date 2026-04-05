@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './TradeList.css'
+import { StrategyContext } from '../../context/StrategyContext';
+import JournalStats from './JournalStats';
 
 function TradeList({ journal }) {
 
     const [ trades, setTrades ] = useState(journal.trades);
     const [ isActive, setIsActive ] = useState(false);
+
+    const { strategies } = useContext(StrategyContext);
+
+    console.log(trades);
 
 
     //TOGGLE
@@ -102,6 +108,10 @@ function TradeList({ journal }) {
 
     return (
         <div className='trade-list'>
+            <div className='stats'>
+                <JournalStats trades={trades} />
+            </div>
+
             <div className='trade-filters'>
                 <p><b>Filter:</b></p>
 
@@ -111,7 +121,7 @@ function TradeList({ journal }) {
 
                 <div>
                     <select name='type' onChange={onFilterChange}> 
-                        <option value='' disabled selected>Type</option>
+                        <option value='' disabled>Type</option>
                         <option value='buy' name='type'>Buy</option>
                         <option value='sell' name='type'>Sell</option>
                     </select>
@@ -119,7 +129,7 @@ function TradeList({ journal }) {
 
                 <div>
                     <select name='tradingStyle' onChange={onFilterChange}>
-                        <option value='' disabled selected>Trading Style</option>
+                        <option value='' disabled>Trading Style</option>
                         <option value='swing'>Swing</option>
                         <option value='intraday'>Intraday</option>
                         <option value='scalping'>Scalping</option>
@@ -129,16 +139,16 @@ function TradeList({ journal }) {
 
                 <div>
                     <select name='strategy' onChange={onFilterChange}>
-                        <option value='' disabled selected>Strategy</option>
-                        <option value='strategy 1'>Strategy 1</option>
-                        <option value='strategy 2'>Strategy 2</option>
-                        <option value='strategy 3'>Strategy 3</option>
+                        <option value='' disabled>Strategy</option>
+                        {strategies.map((strategy) => {
+                            return <option value={strategy.name}>{strategy.name}</option>
+                        })}
                     </select>
                 </div>
 
                 <div>
                     <select name='outcome' onChange={onFilterChange}>
-                        <option value='' disabled selected>Outcome</option>
+                        <option value='' disabled>Outcome</option>
                         <option value='loss'>Loss</option>
                         <option value='profit'>Profit</option>
                         <option value='breakeven'>Breakeven</option>
