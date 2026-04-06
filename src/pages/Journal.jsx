@@ -68,6 +68,18 @@ function Journal() {
         });
     }
 
+    // DELETE JOURNAL
+    function deleteJournal(key) {
+        const confirm = window.confirm("Deleting this journal will permanently remove its all trades.");
+
+        if (confirm) {
+            setJournals(journals.filter((journal) => {
+                return journal.key != key;
+            }));
+            toast.success("Journal deleted");
+        }
+    }
+
 
 
     return (
@@ -92,6 +104,7 @@ function Journal() {
                         </div>
                         <div className='journal-action'>
                             <p className='journal-created-at'><i className="fa-solid fa-calendar-days"></i>&nbsp;&nbsp;{journal.createdAt.toDateString()}</p>
+                            <i onClick={() => deleteJournal(journal.key)} className="fa-regular fa-trash-can delete-btn"></i>
                         </div>
                     </div>
                     )

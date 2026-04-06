@@ -194,3 +194,19 @@ option {
     text-transform: uppercase;
     border: 1px solid rgba(255, 83, 112, 0.3);
 }
+
+/* DELETE BUTTON */
+
+.delete-btn {
+    font-size: 12px;
+    color: #f0f0f0;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.delete-btn:hover {
+    background-color: #ff5370;
+    border: 1px solid rgba(255, 83, 112, 0.3);
+}
