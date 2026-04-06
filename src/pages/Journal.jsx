@@ -73,23 +73,24 @@ function Journal() {
     return (
         <div className='journal'>
             <div className='create-journal'>
-                <button onClick={() => toggle()}><i className="fa-solid fa-plus"></i>Journal</button>
+                <button style={{display: active? "none" : "block"}} onClick={() => toggle()}><i className="fa-solid fa-plus"></i> Create Journal</button>
                 <div style={{display: active? "block" : "none"}} className='journal-form'>
                     <form onSubmit={onCreate}>
-                        <input type='text' placeholder='Enter Journal Name' value={createJournal.name} name='name' onChange={handleChange} required />
+                        <input type='text' placeholder='Journal name...' value={createJournal.name} name='name' onChange={handleChange} required />
                         <button>Create Journal</button>
                     </form>
                 </div>
             </div>
+
             <div className='journals'>
                 {journals.length > 0 ? journals.map((journal) => {
                     return (
-                    <div onClick={() => activeJournal(journal.key)} key={journal.key} style={{backgroundColor: selectedJournal?.[0]?.key === journal.key ? "#94fd9633" : ""}} className='journal-card'>
+                    <div onClick={() => activeJournal(journal.key)} key={journal.key} className={selectedJournal?.[0]?.key === journal.key ? "journal-card-active" : "journal-card"}>
                         <div className='journal-info'>
                             <p className='journal-name'>{journal.name.toUpperCase()}</p>
-                            <p className='journal-trades'>{journal.trades.length} trades</p>
+                            <p className='badge'>{journal.trades.length} trades</p>
                         </div>
-                        <div>
+                        <div className='journal-action'>
                             <p className='journal-created-at'><i className="fa-solid fa-calendar-days"></i>&nbsp;&nbsp;{journal.createdAt.toDateString()}</p>
                         </div>
                     </div>

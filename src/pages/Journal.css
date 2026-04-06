@@ -1,5 +1,5 @@
 .journal {
-    gap: 25px;
+    gap: 20px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -21,19 +21,28 @@
     gap: 15px;
     display: flex;
     flex-wrap: wrap;
+    padding: 10px 0px;
 }
 
 .journal-card {
     min-width: 32%;
-    padding: 5px 15px;
+    padding: 8px 15px;
     border-radius: 8px;
     background-color: #111111;
-    border: 1px solid transparent;
-    box-shadow: 0 0 2px rgb(145, 145, 145);
+    border: 1px solid #232323;
 }
 
 .journal-card:hover {
-    background-color: #1c1c1c;
+    background-color: #131a16;
+    border: 1px solid #b4f0cc2e;
+}
+
+.journal-card-active {
+    min-width: 32%;
+    padding: 8px 15px;
+    border-radius: 8px;
+    background-color: #131a16;
+    border: 1px solid #b4f0cc2e;
 }
 
 .journal-info {
@@ -49,17 +58,6 @@
     letter-spacing: 0.18em;
 }
 
-.journal-trades {
-    font-size: 11px;
-    color: #a8c060;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    background-color: #a8c06033;
-}
-
 .journal-created-at {
     font-size: 12px;
 }
@@ -73,6 +71,10 @@
     }
 
     .journal-card {
-        min-width: 75%;
+        min-width: 80%;
+    }
+
+    .journal-card-active {
+        min-width: 80%;
     }
 }

@@ -68,26 +68,26 @@ function Strategy() {
     return (
         <div className='strategy'>
             <div className='create-strategy'>
-                <button onClick={() => toggle()}><i className="fa-solid fa-plus"></i> Strategy</button>
+                <button style={{display: isActive? "none" : "block"}} onClick={() => toggle()}><i className="fa-solid fa-plus"></i> Strategy</button>
             </div>
 
             <div style={{display: isActive? "block" : "none"}} className='strategy-form'>
                 <form onSubmit={onCreate}>
                     <div className='strategy-name-price'>
-                        <input type='text' placeholder='Enter Strategy Name' value={createStrategy.name} name='name' onChange={handleChange} />
-                        <input type='number' placeholder='Target %' value={createStrategy.target} name='target' onChange={handleChange} />
-                        <input type='number' placeholder='Stoploss %' value={createStrategy.stopLoss} name='stopLoss' onChange={handleChange} />
+                        <input type='text' placeholder='Strategy Name' value={createStrategy.name} name='name' onChange={handleChange} required />
+                        <input type='number' placeholder='Target (%)' value={createStrategy.target} name='target' onChange={handleChange} required />
+                        <input type='number' placeholder='Stop Loss (%)' value={createStrategy.stopLoss} name='stopLoss' onChange={handleChange} required />
                     </div>
 
                     <div className='strategy-options'>
-                        <select value={createStrategy.side} name='side' onChange={handleChange}>
-                            <option value='' disabled>Side</option>
+                        <select value={createStrategy.side} name='side' onChange={handleChange} required>
+                            <option value='' disabled>Trade Side</option>
                             <option value='buy'>Buy</option>
                             <option value='sell'>Sell</option>
                             <option value='both'>Both</option>
                         </select>
 
-                        <select value={createStrategy.type} name='type' onChange={handleChange}>
+                        <select value={createStrategy.type} name='type' onChange={handleChange} required>
                             <option value='' disabled>Strategy Type</option>
                             <option value='swing'>Swing</option>
                             <option value='intraday'>Intraday</option>
@@ -95,7 +95,7 @@ function Strategy() {
                             <option value='positional'>Positional</option>
                         </select>
 
-                        <select value={createStrategy.market} name='market' onChange={handleChange}>
+                        <select value={createStrategy.market} name='market' onChange={handleChange} required>
                             <option value='' disabled>Market</option>
                             <option value='index'>Index</option>
                             <option value='forex'>Forex</option>
@@ -107,43 +107,26 @@ function Strategy() {
                     </div>
 
                     <div className='strategy-notes'>
-                        <input type='text' placeholder='Strategy Notes' value={createStrategy.notes} name='notes' onChange={handleChange} />
+                        <input type='text' placeholder='Define entry, exit, & rules...' value={createStrategy.notes} name='notes' onChange={handleChange} required />
                     </div>
 
-                    <button className='create-strategy-btn'>Create Strategy</button>
+                    <button className='create-strategy-btn'>Add Strategy</button>
                 </form>
             </div>
 
             <div className='strategies'>
                 {strategies.length > 0 ? strategies.map((strategy) => {
                     return (
-                        <div key={strategy.key} className='strategy-card' onClick={() => setSelectedStrategy(strategy)}>
+                        <div key={strategy.key} className={strategy.key === selectedStrategy?.key ? "strategy-card-active" : "strategy-card"} onClick={() => setSelectedStrategy(strategy)}>
                             <div className='strategy-info'>
                                 <p className='strategy-name'>{strategy.name.toUpperCase()}</p>
-                                <div className='strategy-badges'>
-                                    <span>{strategy.side}</span>
-                                    <span>{strategy.type}</span>
-                                    <span>{strategy.market}</span>
-                                </div>
+                                <p className='badge'>RR = 1:{Number(Number(strategy.target) / Number(strategy.stopLoss)).toFixed()}</p>
                             </div>
 
-                            <div className='strategy-prices'>
-                                <div>
-                                    <p>Target</p>
-                                    <p>{strategy.target}%</p>
-                                </div>
-                                <div>
-                                    <p>Stoploss</p>
-                                    <p>{strategy.stopLoss}%</p>
-                                </div>
-                                <div>
-                                    <p>R : R</p>
-                                    <p>1: {(Number(strategy.target) / Number(strategy.stopLoss)).toFixed()}</p>
-                                </div>
-                            </div>
-
-                            <div className='strategy-notes'>
-                                <p><span>Notes: </span>{strategy.notes}</p>
+                            <div className='strategy-action'>
+                                <p className='badge'>{strategy.side}</p>
+                                <p className='badge'>{strategy.type}</p>
+                                <p className='badge'>{strategy.market}</p>
                             </div>
                         </div>
                     )

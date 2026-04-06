@@ -45,80 +45,51 @@
     gap: 15px;
     display: flex;
     flex-wrap: wrap;
+    padding: 10px 0px;
 }
 
 .strategy-card {
-    width: 32%;
-    padding: 15px 10px;
-    position: relative;
+    min-width: 32%;
+    padding: 8px 15px;
     border-radius: 8px;
     background-color: #111111;
     border: 1px solid #232323;
-    transition: border-color 0.2s ease, background 0.2 ease, transform 0.2s ease;
-    animation: fadeUp 0.5s ease both;
 }
 
 .strategy-card:hover {
-    border-color: #3a3a3a;
-    background: #151515;
-    transform: translateY(-1px);
+    background-color: #131a16;
+    border: 1px solid #b4f0cc2e;
+}
+
+.strategy-card-active {
+    min-width: 32%;
+    padding: 8px 15px;
+    border-radius: 8px;
+    background-color: #131a16;
+    border: 1px solid #b4f0cc2e;
 }
 
 .strategy-info {
-    width: 100%;
+    gap: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .strategy-name {
-    margin: 5px 0;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
     letter-spacing: 0.18em;
 }
 
-.strategy-badges {
+.strategy-action {
     gap: 5px;
     display: flex;
-}
-
-.strategy-badges > span {
-    margin: 5px 0;
-    font-size: 10px;
-    color: #6b6b6b;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid #232323;
-    text-transform: uppercase;
-}
-
-.strategy-prices {
-    gap: 10px;
-    display: flex;
-    margin: 10px 0;
-    justify-content: space-between;
-    border-top: 1px solid #232323;
-    border-bottom: 1px solid #232323;
-}
-
-.strategy-prices > div p:nth-of-type(1) {
-    color: #6b6b6b;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-}
-
-.strategy-prices > div p:nth-of-type(2) {
-    color: #afafaf;
-    font-size: 15px;
-}
-
-.strategy-notes > p {
-    margin: 0;
-    color: #6b6b6b;
-    font-size: 14px;
+    flex-wrap: wrap;
 }
 
 @media(max-width: 768px) {
+
     .strategy-name-price {
         width: 100%;
         display: flex;
@@ -141,10 +112,13 @@
         display: flex;
         flex-wrap: nowrap;
         overflow: scroll;
-        padding: 10px 0;
     }
 
     .strategy-card {
+        min-width: 80%;
+    }
+
+    .strategy-card-active {
         min-width: 80%;
     }
 }

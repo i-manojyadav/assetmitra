@@ -122,27 +122,27 @@ function StrategyStats({ strategy }) {
         <div className='strategy-stats'>
             <div className='strategy-stat-card'>
                 <p className='s-title'>Net P&L</p>
-                <p className='s-value'>{strategyStats.netPnL}</p>
+                <p className='s-value'>{Number(Number(strategyStats.netPnL).toFixed(2)).toLocaleString()}</p>
                 <p className='s-sub-title'>After all charges</p>
             </div>
             <div className='strategy-stat-card'>
                 <p className='s-title'>Charges</p>
-                <p className='s-value'>{strategyStats.charges}</p>
+                <p className='s-value'>{Number(strategyStats.charges).toLocaleString()}</p>
                 <p className='s-sub-title'>Brokerage + STT, etc.</p>
             </div>
             <div className='strategy-stat-card'>
                 <p className='s-title'>Win Rate</p>
-                <p className='s-value'>{strategyStats.winRate}%</p>
+                <p className='s-value'>{Number(strategyStats.winRate).toFixed(2)}%</p>
                 <p className='s-sub-title'>Win Rate %</p>
             </div>
             <div className='strategy-stat-card'>
                 <p className='s-title'>Best Trade</p>
-                <p className='s-value'>{strategyStats.bestTrade?.pnl ?? 0}</p>
+                <p className='s-value'>{Number(Number(strategyStats.bestTrade?.pnl).toFixed(2)).toLocaleString() ?? 0}</p>
                 <p className='s-sub-title'>{strategyStats.bestTrade?.symbol ?? "Symbol"}</p>
             </div>
             <div className='strategy-stat-card'>
                 <p className='s-title'>Worst Trade</p>
-                <p className='s-value'>{strategyStats.worstTrade?.pnl ?? 0}</p>
+                <p className='s-value'>{Number(Number(strategyStats.worstTrade?.pnl).toFixed(2)).toLocaleString() ?? 0}</p>
                 <p className='s-sub-title'>{strategyStats.worstTrade?.symbol ?? "Symbol"}</p>
             </div>
             <div className='strategy-stat-card'>

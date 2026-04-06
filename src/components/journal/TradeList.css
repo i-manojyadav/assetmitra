@@ -1,5 +1,5 @@
 .trade-list {
-    gap: 20px;
+    gap: 15px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -9,9 +9,18 @@
     width: 100%;
     gap: 15px;
     display: flex;
+    padding: 5px 0;
     flex-wrap: nowrap;
     overflow-x: hidden;
     align-items: center;
+}
+
+.filter-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f0f0f0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .all-trades-btn {
@@ -104,40 +113,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.typeBuy {
-    font-size: 10px;
-    color: #00d4aa;
-    padding: 5px 15px;
-    margin-left: 5px;
-    border-radius: 5px;
-    background: rgba(0, 212, 170, 0.08);
-    border: 1px solid rgba(0, 212, 170, 0.3);
-    text-transform: uppercase;
-}
-
-.typeBuy:hover {
-    background: rgba(0, 212, 170, 0.15);
-    border-color: rgba(0, 212, 170, 0.6);
-    box-shadow: 0 0 12px rgba(0, 212, 170, 0.2);
-}
-
-.typeSell {
-    font-size: 10px;
-    color: #ff5370;
-    padding: 5px 15px;
-    margin-left: 5px;
-    border-radius: 5px;
-    background: rgba(255, 83, 112, 0.08);
-    border: 1px solid rgba(255, 83, 112, 0.3);
-    text-transform: uppercase;
-}
-
-.typeSell:hover {
-    background: rgba(255, 83, 112, 0.15);
-    border-color: rgba(255, 83, 112, 0.6);
-    box-shadow: 0 0 12px rgba(255, 83, 112, 0.2);
 }
 
 .trade-style-badge {

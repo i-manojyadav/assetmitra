@@ -106,14 +106,14 @@ function TradeList({ journal }) {
             </div>
 
             <div className='trade-filters'>
-                <p><b>Filter:</b></p>
+                <p className='filter-title'>Filter:</p>
 
                 <div>
                     <button className='all-trades-btn' onClick={() => setTrades(journal.trades)}>All</button>
                 </div>
 
                 <div>
-                    <select name='side' onChange={onFilterChange}> 
+                    <select name='side' defaultValue='' onChange={onFilterChange}>
                         <option value='' disabled>Side</option>
                         <option value='buy' name='side'>Buy</option>
                         <option value='sell' name='side'>Sell</option>
@@ -121,7 +121,7 @@ function TradeList({ journal }) {
                 </div>
 
                 <div>
-                    <select name='type' onChange={onFilterChange}>
+                    <select name='type' defaultValue='' onChange={onFilterChange}>
                         <option value='' disabled>Type</option>
                         <option value='swing'>Swing</option>
                         <option value='intraday'>Intraday</option>
@@ -131,7 +131,7 @@ function TradeList({ journal }) {
                 </div>
 
                 <div>
-                    <select name='strategy' onChange={onFilterChange}>
+                    <select name='strategy' defaultValue='' onChange={onFilterChange}>
                         <option value='' disabled>Strategy</option>
                         {strategies.map((strategy) => {
                             return <option value={strategy.name}>{strategy.name}</option>
@@ -140,7 +140,7 @@ function TradeList({ journal }) {
                 </div>
 
                 <div>
-                    <select name='outcome' onChange={onFilterChange}>
+                    <select name='outcome' defaultValue='' onChange={onFilterChange}>
                         <option value='' disabled>Outcome</option>
                         <option value='loss'>Loss</option>
                         <option value='profit'>Profit</option>
@@ -173,7 +173,7 @@ function TradeList({ journal }) {
                                 <>
                                 <tr>
                                     <td>{trade.symbol}</td>
-                                    <td><span className={trade.side === "buy" ? "typeBuy" : "typeSell"}>{trade.side}</span></td>
+                                    <td><span className={trade.side === "buy" ? "buy-badge" : "sell-badge"}>{trade.side}</span></td>
                                     <td>{Number(trade.entryPrice).toLocaleString()}</td>
                                     <td>{Number(trade.exitPrice).toLocaleString()}</td>
                                     <td>{Number(trade.qty).toLocaleString()}</td>
@@ -198,7 +198,7 @@ function TradeList({ journal }) {
                         <div style={{borderLeft: tradePnL > 0 ? "4px solid #00e5a070" : "4px solid #ff456070"}} key={trade.key} className='trade-card-mobile'>
                             <div className='trade-info'>
                                 <div className='trade-symbol-pnl'>
-                                    <p><span>{trade.symbol.toUpperCase()}</span> <span className={trade.side === "buy" ? "typeBuy" : "typeSell"}>{trade.side}</span></p>
+                                    <p><span>{trade.symbol.toUpperCase()}</span> <span className={trade.side === "buy" ? "buy-badge" : "sell-badge"}>{trade.side}</span></p>
                                     <p style={{color: tradePnL > 0 ? "#00e5a0" : "#ff4560"}}>{tradePnL.toLocaleString()} ({tradeROI.toFixed(2)}%)</p>
                                 </div>
                                 <div className='trade-price'>

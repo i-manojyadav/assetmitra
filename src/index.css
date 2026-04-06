@@ -158,3 +158,39 @@ option {
     border-radius: 100px;
     box-shadow: 0 0 2px rgb(145, 145, 145);
 }
+
+/* BADGE */
+
+.badge {
+    margin: 5px 0;
+    font-size: 10px;
+    color: #f0f0f0;
+    padding: 5px 15px;
+    border-radius: 5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background-color: #111111;
+    border: 1px solid #232323;
+}
+
+.buy-badge {
+    font-size: 10px;
+    color: #00d4aa;
+    padding: 5px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid rgba(0, 212, 170, 0.3);
+}
+
+.sell-badge {
+    font-size: 10px;
+    color: #ff5370;
+    padding: 5px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 83, 112, 0.3);
+}

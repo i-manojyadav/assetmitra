@@ -97,19 +97,19 @@ function AddTrade({ journalKey }) {
                 </div>
                 
                 <form onSubmit={onAddTrade}>
-                    <div className='trade-symbol-type'>
+                    <div className='trade-symbol-side'>
                         <div className='trade-symbol'>
                             <input type='text' placeholder='Enter Symbol' value={addTrade.symbol} name='symbol' onChange={handleChange} required />
                         </div>
-                        <div className='trade-type'>
+                        <div className='trade-side'>
                             <label><input type='radio' value='buy' name='side' checked={addTrade.side === "buy"} onChange={handleChange} required />Buy</label>
                             <label><input type='radio' value='sell' name='side' checked={addTrade.side === "sell"} onChange={handleChange} required />Sell</label>
                         </div>
                     </div>
 
-                    <div className='trade-style-strategy'>
-                        <div className='trade-style'>
-                            <label>Trade Type</label>
+                    <div className='trade-type-strategy'>
+                        <div className='trade-type'>
+                            <label>Type</label>
                             <select value={addTrade.type} name='type' onChange={handleChange} required >
                                 <option value="" disabled>Select</option>
                                 <option value="swing" >Swing</option>
@@ -120,7 +120,7 @@ function AddTrade({ journalKey }) {
                         </div>
 
                         <div className='trade-strategy'>
-                            <label>Trading Strategy</label>
+                            <label>Strategy</label>
                             <select value={addTrade.strategy} name='strategy' onChange={handleChange} required >
                                 <option value="" disabled>Select</option>
                                 {strategies.map((strategy, idx) => {
@@ -138,7 +138,7 @@ function AddTrade({ journalKey }) {
                     <div className='trade-qty-sl'>
                         <input type='number' placeholder='Enter Quantity' value={addTrade.qty} name='qty' onChange={handleChange} required />
 
-                        <input type='number' placeholder='Stop Loss' value={addTrade.stopLoss} name='stopLoss' onChange={handleChange} required />
+                        <input type='number' placeholder='Enter Stop-loss' value={addTrade.stopLoss} name='stopLoss' onChange={handleChange} required />
                     </div>
 
                     <div className='trade-charges-datetime'>
