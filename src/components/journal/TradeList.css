@@ -109,17 +109,10 @@
     letter-spacing: 0.18em;
 }
 
-.trd-type-date {
+.trd-type-strategy {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.trade-style-badge {
-    font-size: 12px;
-    padding: 5px 15px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 212, 170, 0.3);
 }
 
 @media(max-width: 768px) {

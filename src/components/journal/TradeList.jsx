@@ -6,16 +6,25 @@ import JournalStats from './JournalStats';
 function TradeList({ journal }) {
 
     const [ trades, setTrades ] = useState([]);
-    const [ isActive, setIsActive ] = useState(false);
+    const [ isActive, setIsActive ] = useState(null);
 
     const { strategies } = useContext(StrategyContext);
+
+    // TOGGLE
+    function toggle() {
+        if (isActive === false) {
+            setIsActive(true);
+        } else {
+            setIsActive(false);
+        }
+    }
 
     // UPDATE SELECTED JOURNAL
     useEffect(() => {
         setTrades(journal.trades);
     }, [journal]);
 
-    //CALCULATE PROFIT & LOSS
+    // CALCULATE PROFIT & LOSS
     function calculatePnL(trade) {
 
         const entry = Number(trade.entryPrice);
@@ -42,7 +51,7 @@ function TradeList({ journal }) {
         }
     }
 
-    //TRADE OUTCOME
+    // TRADE OUTCOME
     function tradeOutcome(trade, value) {
 
         const { tradePnL } = calculatePnL(trade);
@@ -159,29 +168,36 @@ function TradeList({ journal }) {
                             <th>Exit</th>
                             <th>Qty</th>
                             <th>SL</th>
-                            <th>Type</th>
                             <th>Charges</th>
                             <th>Net P&L</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {trades.map((trade) => {
+                        {trades.map((trade, index) => {
 
                             const { tradePnL, tradeROI } = calculatePnL(trade);
 
                             return (
                                 <>
-                                <tr>
-                                    <td>{trade.symbol}</td>
+                                <tr onClick={() => setIsActive(isActive === index ? null : index)}>
+                                    <td style={{borderLeft: tradePnL > 0 ? "2px solid #00e5a0" : "2px solid #ff4560"}}>{trade.symbol}</td>
                                     <td><span className={trade.side === "buy" ? "buy-badge" : "sell-badge"}>{trade.side}</span></td>
                                     <td>{Number(trade.entryPrice).toLocaleString()}</td>
                                     <td>{Number(trade.exitPrice).toLocaleString()}</td>
                                     <td>{Number(trade.qty).toLocaleString()}</td>
                                     <td>{Number(trade.stopLoss).toLocaleString()}</td>
-                                    <td>{trade.type}</td>
                                     <td>{Number(trade.charges).toLocaleString()}</td>
                                     <td style={{color: tradePnL > 0? "#00e5a0" : "#ff4560"}}>{(tradePnL).toLocaleString()} ({tradeROI.toFixed(2)}%)</td>
                                 </tr>
+
+                                {isActive === index && (<tr className='expanded-section'>
+                                    <td><span style={{color: "#909090"}}>Strategy</span></td>
+                                    <td><span className='badge'>{trade.strategy}</span></td>
+                                    <td><span style={{color: "#909090"}}>Type</span></td>
+                                    <td><span className='badge'>{trade.type}</span></td>
+                                    <td><span style={{color: "#909090"}}>Notes:</span></td>
+                                    <td colSpan='5'><span>{trade.notes}</span></td>
+                                </tr>)}
                                 </>
                             )
                         })}
@@ -190,12 +206,12 @@ function TradeList({ journal }) {
             </div>
 
             <div className='trade-list-mobile'>
-                {trades.map((trade) => {
+                {trades.map((trade, index) => {
 
                     const { tradePnL, tradeROI } = calculatePnL(trade);
 
                     return (
-                        <div style={{borderLeft: tradePnL > 0 ? "4px solid #00e5a070" : "4px solid #ff456070"}} key={trade.key} className='trade-card-mobile'>
+                        <div onClick={() => setIsActive(isActive === index ? null : index)} style={{borderLeft: tradePnL > 0 ? "4px solid #00e5a0" : "4px solid #ff4560"}} key={trade.key} className='trade-card-mobile'>
                             <div className='trade-info'>
                                 <div className='trade-symbol-pnl'>
                                     <p><span>{trade.symbol.toUpperCase()}</span> <span className={trade.side === "buy" ? "buy-badge" : "sell-badge"}>{trade.side}</span></p>
@@ -219,19 +235,19 @@ function TradeList({ journal }) {
                                         <p className='trd-value'>{Number(trade.charges).toLocaleString()}</p>
                                     </div>
                                 </div>
-                                <div className='trd-type-date'>
+                                <div className='trd-type-strategy'>
                                     <div>
-                                        <p className='trade-style-badge'>{trade.type.toUpperCase()}</p>
+                                        <p className='badge'>{trade.type.toUpperCase()}</p>
                                     </div>
                                     <div>
-                                        <p className='trd-value'>{trade.strategy.toUpperCase()}</p>
+                                        <p className='badge'>{trade.strategy.toUpperCase()}</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div style={{display: isActive? "block" : "none"}}>
-                                <p>Extra Info</p>
-                            </div>
+                            {isActive === index && <div>
+                                <p><span style={{color: "#f0f0f0"}}>Notes:</span> <span style={{color: "#8d8d8d"}}>{trade.notes}</span></p>
+                            </div>}
                         </div>
                     )
                 })}

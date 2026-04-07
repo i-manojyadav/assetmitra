@@ -63,6 +63,7 @@ table {
 }
 
 tr {
+    cursor: pointer;
     border: 1px solid #1f1f1f;
 }
 
@@ -209,4 +210,40 @@ option {
 .delete-btn:hover {
     background-color: #ff5370;
     border: 1px solid rgba(255, 83, 112, 0.3);
+}
+
+/* EXPANDED SECTION */
+
+.expanded-section {
+    width: 100%;
+    overflow: hidden;
+    animation: expand 0.35 ease forwards;
+}
+
+@keyframes expand {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.expanded-section td {
+    font-size: 13px;
+    color: #e8eeff;
+    animation: fadeContent 0.4s ease;
+    background-color: #000000;
+}
+
+@keyframes fadeContent {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
