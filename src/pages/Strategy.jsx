@@ -65,6 +65,17 @@ function Strategy() {
         console.log(strategies);
     }
 
+    // DELETE STRATEGY
+    function deleteStrategy(key) {
+        const confirm = window.confirm("Are you sure you want to delete this strategy?");
+        if (confirm) {
+            setStrategies(strategies.filter((strategy) => {
+                return strategy.key !== key;
+            }));
+        }
+
+    }
+
     return (
         <div className='strategy'>
             <div className='create-strategy'>
@@ -124,9 +135,8 @@ function Strategy() {
                             </div>
 
                             <div className='strategy-action'>
-                                <p className='badge'>{strategy.side}</p>
-                                <p className='badge'>{strategy.type}</p>
-                                <p className='badge'>{strategy.market}</p>
+                                <p className='strategy-created-at'><i className="fa-solid fa-calendar-days"></i>&nbsp;&nbsp;{strategy.createdAt.toDateString()}</p>
+                                <i onClick={() => {deleteStrategy(strategy.key)}} className="fa-regular fa-trash-can delete-btn"></i>
                             </div>
                         </div>
                     )

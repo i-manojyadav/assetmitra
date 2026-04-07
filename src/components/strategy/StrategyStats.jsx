@@ -119,6 +119,19 @@ function StrategyStats({ strategy }) {
 
 
     return (
+        <>
+        <div className='strategy-details'>
+            <div>
+                <p className='strategy-title'>{strategy.name}</p>
+                <span className='badge'>{strategy.side}</span>
+                <span className='badge'>{strategy.type}</span>
+                <span className='badge'>{strategy.market}</span>
+            </div>
+            <div>
+                <p><span style={{color: "#6b6b6b"}}>Target: </span><span>{strategy.target}%</span> | <span style={{color: "#6b6b6b"}}>Stop Loss: </span><span>{strategy.stopLoss}%</span></p>
+                <p><span style={{color: "#6b6b6b"}}>Notes: </span> <span>{strategy.notes}</span></p>
+            </div>
+        </div>
         <div className='strategy-stats'>
             <div className='strategy-stat-card'>
                 <p className='s-title'>Net P&L</p>
@@ -151,6 +164,7 @@ function StrategyStats({ strategy }) {
                 <p className='s-sub-title'>No. of total trades</p>
             </div>
         </div>
+        </>
     )
 }
 

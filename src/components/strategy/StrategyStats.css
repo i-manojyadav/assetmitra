@@ -1,3 +1,28 @@
+.strategy-details {
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 25px;
+    border: 1px solid #232323;
+    background-color: #111111;
+    border-radius: 0px 10px 10px 0px;
+    border-left: 4px solid #f0f0f0;
+}
+
+.strategy-details div:nth-of-type(1) {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.strategy-title {
+    color: #f0f0f0;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
 .strategy-stats {
     gap: 15px;
     width: 100%;

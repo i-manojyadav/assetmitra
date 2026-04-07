@@ -83,9 +83,13 @@
 }
 
 .strategy-action {
-    gap: 5px;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.strategy-created-at {
+    font-size: 12px;
 }
 
 @media(max-width: 768px) {
