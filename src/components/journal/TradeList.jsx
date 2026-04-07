@@ -2,12 +2,14 @@ import { useContext, useEffect, useState } from 'react';
 import './TradeList.css'
 import { StrategyContext } from '../../context/StrategyContext';
 import JournalStats from './JournalStats';
+import { JournalContext } from '../../context/JournalContext';
 
 function TradeList({ journal }) {
 
     const [ trades, setTrades ] = useState([]);
     const [ isActive, setIsActive ] = useState(null);
 
+    const { journals, setJournals } = useContext(JournalContext);
     const { strategies } = useContext(StrategyContext);
 
     // TOGGLE
@@ -106,6 +108,22 @@ function TradeList({ journal }) {
 
     }
 
+    // DELETE TRADE
+    function deleteTrade(key) {
+        
+        setJournals(journals.map((journal) => {
+            return {
+                ...journal, trades: journal.trades.filter((trade) => {
+                    return trade.key !== key;
+                })
+            }
+        }));
+
+        setTrades(trades.filter((trade) => {
+            return trade.key !== key;
+        }));
+    }
+
 
 
     return (
@@ -142,8 +160,8 @@ function TradeList({ journal }) {
                 <div>
                     <select name='strategy' defaultValue='' onChange={onFilterChange}>
                         <option value='' disabled>Strategy</option>
-                        {strategies.map((strategy) => {
-                            return <option value={strategy.name}>{strategy.name}</option>
+                        {strategies.map((strategy, idx) => {
+                            return <option key={idx} value={strategy.name}>{strategy.name}</option>
                         })}
                     </select>
                 </div>
@@ -170,6 +188,7 @@ function TradeList({ journal }) {
                             <th>SL</th>
                             <th>Charges</th>
                             <th>Net P&L</th>
+                            <th><i className="fa-solid fa-ellipsis-vertical"></i></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -179,7 +198,7 @@ function TradeList({ journal }) {
 
                             return (
                                 <>
-                                <tr onClick={() => setIsActive(isActive === index ? null : index)}>
+                                <tr key={trade.key} onClick={() => setIsActive(isActive === index ? null : index)}>
                                     <td style={{borderLeft: tradePnL > 0 ? "2px solid #00e5a0" : "2px solid #ff4560"}}>{trade.symbol}</td>
                                     <td><span className={trade.side === "buy" ? "buy-badge" : "sell-badge"}>{trade.side}</span></td>
                                     <td>{Number(trade.entryPrice).toLocaleString()}</td>
@@ -188,6 +207,7 @@ function TradeList({ journal }) {
                                     <td>{Number(trade.stopLoss).toLocaleString()}</td>
                                     <td>{Number(trade.charges).toLocaleString()}</td>
                                     <td style={{color: tradePnL > 0? "#00e5a0" : "#ff4560"}}>{(tradePnL).toLocaleString()} ({tradeROI.toFixed(2)}%)</td>
+                                    <td><i onClick={() => deleteTrade(trade.key)} className="fa-regular fa-trash-can delete-btn"></i></td>
                                 </tr>
 
                                 {isActive === index && (<tr className='expanded-section'>
@@ -240,12 +260,13 @@ function TradeList({ journal }) {
                                         <p className='badge'>{trade.type.toUpperCase()}</p>
                                     </div>
                                     <div>
-                                        <p className='badge'>{trade.strategy.toUpperCase()}</p>
+                                        <i onClick={() => deleteTrade(trade.key)} className="fa-regular fa-trash-can delete-btn"></i>
                                     </div>
                                 </div>
                             </div>
 
-                            {isActive === index && <div>
+                            {isActive === index && <div className='expanded-section-mobile'>
+                                <p className='badge'>Strategy : {trade.strategy}</p>
                                 <p><span style={{color: "#f0f0f0"}}>Notes:</span> <span style={{color: "#8d8d8d"}}>{trade.notes}</span></p>
                             </div>}
                         </div>

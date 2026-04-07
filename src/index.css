@@ -168,6 +168,7 @@ option {
     color: #f0f0f0;
     padding: 5px 15px;
     border-radius: 5px;
+    width: fit-content;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     background-color: #111111;
@@ -180,6 +181,7 @@ option {
     padding: 5px 15px;
     margin-left: 5px;
     border-radius: 5px;
+    width: fit-content;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     border: 1px solid rgba(0, 212, 170, 0.3);
@@ -191,6 +193,7 @@ option {
     padding: 5px 15px;
     margin-left: 5px;
     border-radius: 5px;
+    width: fit-content;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     border: 1px solid rgba(255, 83, 112, 0.3);

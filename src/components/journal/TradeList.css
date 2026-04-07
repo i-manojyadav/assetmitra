@@ -46,6 +46,7 @@
 }
 
 .trade-card-mobile {
+    gap: 15px;
     width: 100%;
     display: flex;
     margin: 15px 0;
@@ -113,6 +114,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+} 
+
+.expanded-section-mobile {
+    display: flex;
+    padding-top: 15px;
+    flex-direction: column;
+    border-top: 1px solid #232323;
 }
 
 @media(max-width: 768px) {
