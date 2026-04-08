@@ -1,22 +1,17 @@
 import './StatCard.css'
 
-function StatCard({ color = false, title, value, roi }) {
+function StatCard({ title, value, subTitle, isPnL, roi, isWinRate }) {
 
-    let defaultColor = "white";
-
-    if (color) {
-        defaultColor = value >= 0 ? "green" : "red";
+    let valueColor = "#ffffff";
+    if (isPnL) {
+        valueColor = value >= 0 ? "#008000" : "#ff0000";
     }
 
     return (
         <div className='stat-card desktop-view'>
-            <div>
-                <i className="fa-solid fa-indian-rupee-sign"></i>
-            </div>
-            <div>
-                <p><b>{title}</b></p>
-                <p style={{color: defaultColor}}>{Number(value).toLocaleString()} <span style={{display: roi !== undefined ? "inline-block" : "none"}}>({Number(Number(roi).toFixed(2)).toLocaleString()}%)</span></p>
-            </div>
+            <p className='stat-title'>{title}</p>
+            <p className='stat-value' style={{color: valueColor}}>{Number(Number(value).toFixed(1)).toLocaleString()}<span className='roi' style={{display: isPnL? "inline-block" : "none"}}>({Number(Number(roi).toFixed(1)).toLocaleString()}%)</span><span style={{display: isWinRate? "inline-block" : "none"}}>%</span></p>
+            <p className='stat-sub-title'>{subTitle}</p>
         </div>
     )
 }

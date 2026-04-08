@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import './JournalStats.css'
+import StatCard from '../ui/StatCard';
 
 function JournalStats({ trades }) {
 
@@ -72,37 +73,13 @@ function JournalStats({ trades }) {
 
 
     return (
-        <div className='journal-stats'>
-            <div className='journal-stat-card'>
-                <p className='trade-title'>Gross P&L</p>
-                <p className='trade-value'>{Number(journalStats.grossPnL).toLocaleString()}</p>
-                <p className='sub-title'>Before Charges</p>
-            </div>
-            <div className='journal-stat-card'>
-                <p className='trade-title'>Net P&L</p>
-                <p className='trade-value'>{Number(journalStats.netPnL).toLocaleString()} <span className='stat-roi-badge'>({Number(Number(journalStats.roi).toFixed(2)).toLocaleString()}%)</span></p>
-                <p className='sub-title'>After all charges</p>
-            </div>
-            <div className='journal-stat-card'>
-                <p className='trade-title'>Win Rate</p>
-                <p className='trade-value'>{(Number(journalStats.winRate).toFixed(2)).toLocaleString()}%</p>
-                <p className='sub-title'>Win Rate %</p>
-            </div>
-            <div className='journal-stat-card'>
-                <p className='trade-title'>Total Trades</p>
-                <p className='trade-value'>{Number(trades.length).toLocaleString()}</p>
-                <p className='sub-title'>No. of total trades</p>
-            </div>
-            <div className='journal-stat-card'>
-                <p className='trade-title'>Total Invested</p>
-                <p className='trade-value'>{Number(journalStats.invested).toLocaleString()}</p>
-                <p className='sub-title'>Capital deployed</p>
-            </div>
-            <div className='journal-stat-card'>
-                <p className='trade-title'>Total Charges</p>
-                <p className='trade-value'>{Number(journalStats.charges).toLocaleString()}</p>
-                <p className='sub-title'>Brokerage + STT, etc.</p>
-            </div>
+        <div className='stats'>
+            <StatCard title={"Invested"} value={journalStats.invested} subTitle={"Capital deployed"} />
+            <StatCard title={"Gross P&L"} value={journalStats.grossPnL} subTitle={"Before charges"} />
+            <StatCard title={"Net P&L"} value={journalStats.netPnL} subTitle={"After charges"} roi={journalStats.roi} isPnL={true} />
+            <StatCard title={"Win Rate"} value={journalStats.winRate} subTitle={"Win Rate (%)"} isWinRate={true} />
+            <StatCard title={"Total Trades"} value={trades.length} subTitle={"No. of total trades"} />
+            <StatCard title={"Charges"} value={journalStats.charges} subTitle={"Brokerage & Taxes"} />
         </div>
     )
 }

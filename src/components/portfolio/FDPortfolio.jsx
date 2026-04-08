@@ -110,9 +110,9 @@ function FDPortfolio() {
         <div className='fd-portfolio'>
             <div className='fd-stats'>
                 <div className='fd-stats-desktop'>
-                    <StatCard title={"Invested"} value={Number(fdStats.invested)} />
-                    <StatCard title={"Current"} value={Number(fdStats.current)} />
-                    <StatCard title={"Profit"} value={Number(fdStats.fdProfit)} roi={fdStats.roi} color={true} />
+                    <StatCard title={"Invested"} value={fdStats.invested} subTitle={"Capital deployed"} />
+                    <StatCard title={"Current"} value={fdStats.current} subTitle={"Market Value"} />
+                    <StatCard title={"Profit"} value={fdStats.fdProfit} subTitle={"Unrealized"} roi={fdStats.roi} isPnL={true} />
                 </div>
                 <div className='fd-stats-mobile'>
                     <StatCardMobo invested={fdStats.invested} current={fdStats.current} pnl={fdStats.fdProfit} roi={fdStats.roi} color={true} />
@@ -152,7 +152,7 @@ function FDPortfolio() {
                                 <td>{Number(Number(fd.maturityAmount).toFixed()).toLocaleString()}</td>
                                 <td>{Number(fd.daysLeft).toFixed()}</td>
                                 <td style={{color: "green"}}>{Number(Number(fd.profit).toFixed()).toLocaleString()}</td>
-                                <td onClick={() => removeFD(fd.bankName, fd.key)}><i className="fa-solid fa-arrow-right-from-bracket"></i></td>
+                                <td onClick={() => removeFD(fd.bankName, fd.key)}><i className="fa-regular fa-trash-can delete-btn"></i></td>
                             </tr>
                         )
                     })} />

@@ -48,9 +48,9 @@ export default function PortfolioSummary() {
         <div className='portfolio-summary'>
             <div className='summary-stats'>
                 <div className='summary-stats-desk'>
-                    <StatCard title={"Invested"} value={Number(asset.invested)} />
-                    <StatCard title={"Current"} value={Number(asset.current)} />
-                    <StatCard title={"Profit & Loss"} value={Number(asset.pnl)} roi={Number(asset.roi)} color={true} />
+                    <StatCard title={"Invested"} value={Number(asset.invested)} subTitle={"Capital deployed"} />
+                    <StatCard title={"Current"} value={Number(asset.current)} subTitle={"Market Value"} />
+                    <StatCard title={"Profit & Loss"} value={Number(asset.pnl)} subTitle={"Unrealized"} roi={Number(asset.roi)} isPnL={true} />
                 </div>
                 <div className='summary-stats-mobo'>
                     <StatCardMobo invested={Number(asset.invested)} current={Number(asset.current)} pnl={Number(asset.pnl)} roi={Number(asset.roi)} color={true} />

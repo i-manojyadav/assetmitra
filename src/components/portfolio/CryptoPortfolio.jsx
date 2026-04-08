@@ -72,11 +72,11 @@ export default function CryptoPortfolio() {
 
     return (
         <div className='crypto-portfolio'>
-            <div className='crypto-stats'>
+            <div className='crypto-stats-'>
                 <div className='crypto-stats-desk'>
-                    <StatCard title="Invested" value={cryptoStats.invested} />
-                    <StatCard title="Current" value={cryptoStats.current} />
-                    <StatCard title="Profit & Loss" value={cryptoStats.pnl} roi={cryptoStats.roi} color={true} />
+                    <StatCard title={"Invested"} value={cryptoStats.invested} subTitle={"Capital deployed"} />
+                    <StatCard title={"Current"} value={cryptoStats.current} subTitle={"Market Value"} />
+                    <StatCard title={"Profit & Loss"} value={cryptoStats.pnl} subTitle={"Unrealized"} roi={cryptoStats.roi} isPnL={true} />
                 </div>
                 <div className='crypto-stats-mobo'>
                     <StatCardMobo invested={cryptoStats.invested} current={cryptoStats.current} pnl={cryptoStats.pnl} roi={cryptoStats.roi} color={true}/>

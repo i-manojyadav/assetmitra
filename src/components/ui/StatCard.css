@@ -1,18 +1,50 @@
 .stat-card {
-    gap: 10px;
-    width: fit-content;
-    color: #ffffff;
-    padding: 5px 20px;
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-    background-color: #111111;
-    box-shadow: 0 0 2px rgb(145, 145, 145);
+    width: 32%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 25px;
+    border-radius: 8px;
+    background: #111111;
+    border: 1px solid #232323;
+    border-left: 4px solid #3a3a3a;
+    animation: fadeUp 0.5s ease both;
+    transition: border-color 0.2s ease, background 0.2 ease, transform 0.2s ease;
 }
 
-.stat-card i {
-    color: #414141;
-    font-size: 45px;
+.stat-card:hover {
+    border-color: #3a3a3a;
+    background: #151515;
+    transform: translateY(-1px);
+}
+
+.stat-title {
+    color: #6b6b6b;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 5px 0;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #f0f0f0;
+}
+
+.stat-sub-title {
+    color: #6b6b6b;
+    font-size: 11px;
+    font-weight: 500;
+    margin: 5px 0;
+    letter-spacing: 0.18em;
+}
+
+.roi {
+    font-size: 20px;
+    font-weight: 700;
 }
 
 /* STAT CARD MOBILE */
@@ -57,4 +89,26 @@
     margin: 5px 0;
     color: #ffffff;
     border: 1px solid #414141;
+}
+
+@media(max-width: 768px) {
+    .stat-card {
+        width: 48%;
+    }
+
+    .stat-title {
+        font-size: 10px;
+    }
+
+    .stat-value {
+        font-size: 22px;
+    }
+
+    .stat-sub-title {
+        font-size: 10px;
+    }
+
+    .roi {
+        font-size: 18px;
+    }
 }
