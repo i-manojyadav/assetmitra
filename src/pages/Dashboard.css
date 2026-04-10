@@ -4,17 +4,3 @@
     display: flex;
     flex-direction: column;
 }
-
-.tab-btn {
-    gap: 10px;
-    display: flex;
-    width: fit-content;
-    padding: 7px 7px;
-    border-radius: 999px;
-    background-color: #111111;
-}
-
-.tab-btn > button {
-    color: #f0f0f0;
-    background-color: #000000;
-}

@@ -6,21 +6,19 @@ import FDPortfolio from '../components/portfolio/FDPortfolio';
 
 function Portfolio() {
 
-    const [selected, setSelected] = useState("summary")
+    const [ active, setActive ] = useState("summary");
 
     return(
         <div className='portfolio'>
-            <div className='select-portfolio'>
-                <select value={selected} onChange={(e) => setSelected(e.target.value)}>
-                    <option value="summary">Summary</option>
-                    <option value="crypto">Crypto</option>
-                    <option value="fd">FD</option>
-                </select>
+            <div className='tab-btns'>
+                <button className={active === "summary" ? "tab-active-btn" : ""} onClick={() => setActive("summary")}>Summary</button>
+                <button className={active === "crypto" ? "tab-active-btn" : ""} onClick={() => setActive("crypto")}>Crypto</button>
+                <button className={active === "fd" ? "tab-active-btn" : ""} onClick={() => setActive("fd")}>FD</button>
             </div>
-            <div>
-                {selected === "summary" && <PortfolioSummary />}
-                {selected === "crypto" && <CryptoPortfolio />}
-                {selected === "fd" && <FDPortfolio />}
+            <div className='tab-content'>
+                {active === "summary" && <PortfolioSummary />}
+                {active === "crypto" && <CryptoPortfolio />}
+                {active === "fd" && <FDPortfolio />}
             </div>
         </div>
     )

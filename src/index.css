@@ -241,6 +241,36 @@ input[type="radio"] {
     flex-direction: row;
 }
 
+/* TABS */
+
+.tab-btns {
+    gap: 5px;
+    display: flex;
+    width: fit-content;
+    padding: 7px 7px;
+    border-radius: 999px;
+    background-color: #111111;
+    border: 1px solid #232323;
+}
+
+.tab-btns > button {
+    margin: 0;
+    font-size: 15px;
+    color: #f0f0f0;
+    padding: 12px 15px;
+    letter-spacing: 0.12em;
+    background-color: transparent;
+}
+
+.tab-active-btn {
+    margin: 0;
+    font-size: 15px;
+    color: #f0f0f0;
+    letter-spacing: 0.12em;
+    box-sizing: 0 8px 25px rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
 /* EXPANDED SECTION */
 
 .expanded-section {
@@ -294,5 +324,9 @@ input[type="radio"] {
 
     .stats-mobile {
         display: block;
+    }
+
+    .tab-btns {
+        margin: 0 auto;
     }
 }
