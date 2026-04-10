@@ -44,7 +44,7 @@ function PositionItem({ onAdd }) {
                                 <td>{Number(Number(item.cur).toFixed(2)).toLocaleString()}</td>
                                 <td>{Number(Number(item.ltp).toFixed(2)).toLocaleString()}</td>
                                 <td style={{color: item.pnl > 0 ? "green" : "red"}}>{Number(Number(item.pnl).toFixed(2)).toLocaleString()} ({(((item.pnl/item.inv)*100).toFixed(2)).toLocaleString()}%)</td>
-                                <td onClick={() => {exitPosition(item.symbol, item.key)}}><i className="fa-regular fa-trash-can delete-btn"></i></td>
+                                <td onClick={() => {exitPosition(item.symbol, item.key)}}><i className="fa-regular fa-trash-can"></i></td>
                             </tr>
                         ))}
                     </tbody>

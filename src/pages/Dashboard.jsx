@@ -1,8 +1,16 @@
+import PortfolioDashboard from '../components/dashboard/portfolio/PortfolioDashboard';
 import './Dashboard.css'
 
 function Dashboard() {
     return (
-        <h1>Dashboard</h1>
+        <div className='dashboard'>
+            <div className='tab-btn'>
+                <button>Portfolio</button>
+            </div>
+            <div className='tab-content'>
+                <PortfolioDashboard />
+            </div>
+        </div>
     )
 }
 

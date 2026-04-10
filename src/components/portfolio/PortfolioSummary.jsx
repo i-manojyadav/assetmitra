@@ -1,6 +1,5 @@
 import './PortfolioSummary.css'
-import StatCard, {StatCardMobo} from '../ui/StatCard'
-import TradeInsightCard from '../ui/TradeInsightCard'
+import StatCard, { StatCardMobile } from '../ui/StatCard'
 import { useContext, useEffect, useState } from 'react'
 import { CryptoPortfolioContext } from '../../context/CryptoPortfolioContext'
 import { FDPortfolioContext } from '../../context/FDPortfolioContext'
@@ -47,13 +46,13 @@ export default function PortfolioSummary() {
     return (
         <div className='portfolio-summary'>
             <div className='summary-stats'>
-                <div className='summary-stats-desk'>
+                <div className='stats summary-stats-desktop'>
                     <StatCard title={"Invested"} value={Number(asset.invested)} subTitle={"Capital deployed"} />
                     <StatCard title={"Current"} value={Number(asset.current)} subTitle={"Market Value"} />
                     <StatCard title={"Profit & Loss"} value={Number(asset.pnl)} subTitle={"Unrealized"} roi={Number(asset.roi)} isPnL={true} />
                 </div>
-                <div className='summary-stats-mobo'>
-                    <StatCardMobo invested={Number(asset.invested)} current={Number(asset.current)} pnl={Number(asset.pnl)} roi={Number(asset.roi)} color={true} />
+                <div className='stats-mobile'>
+                    <StatCardMobile invested={asset.invested} current={asset.current} pnl={asset.pnl} roi={asset.roi} />
                 </div>
             </div>
         </div>

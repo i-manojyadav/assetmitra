@@ -1,0 +1,25 @@
+.portfolio-stats {
+    width: 100%;
+}
+
+.select-folio {
+    gap: 10px;
+    display: flex;
+    justify-content: start;
+    margin-bottom: 25px;
+}
+
+.select-folio > label {
+    display: flex;
+    align-items: center;
+}
+
+.select-folio > label input[type="radio"] {
+    margin-left: 0;
+}
+
+@media(max-width: 768px) {
+    .stats-desktop {
+        display: none;
+    }
+}

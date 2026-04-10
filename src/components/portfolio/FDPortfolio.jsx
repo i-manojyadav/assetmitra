@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import StatCard, { StatCardMobo } from '../ui/StatCard'
+import StatCard, { StatCardMobile } from '../ui/StatCard'
 import './FDPortfolio.css'
 import { v4 as uuidv4 } from 'uuid';
 import AssetList, { AssetListMobile } from '../ui/AssetList';
@@ -109,13 +109,13 @@ function FDPortfolio() {
     return (
         <div className='fd-portfolio'>
             <div className='fd-stats'>
-                <div className='fd-stats-desktop'>
+                <div className='stats fd-stats-desktop'>
                     <StatCard title={"Invested"} value={fdStats.invested} subTitle={"Capital deployed"} />
                     <StatCard title={"Current"} value={fdStats.current} subTitle={"Market Value"} />
                     <StatCard title={"Profit"} value={fdStats.fdProfit} subTitle={"Unrealized"} roi={fdStats.roi} isPnL={true} />
                 </div>
-                <div className='fd-stats-mobile'>
-                    <StatCardMobo invested={fdStats.invested} current={fdStats.current} pnl={fdStats.fdProfit} roi={fdStats.roi} color={true} />
+                <div className='stats-mobile'>
+                    <StatCardMobile invested={fdStats.invested} current={fdStats.current} pnl={fdStats.fdProfit} roi={fdStats.roi} />
                 </div>
             </div>
             <div className='add-fd-toggle'>
@@ -152,7 +152,7 @@ function FDPortfolio() {
                                 <td>{Number(Number(fd.maturityAmount).toFixed()).toLocaleString()}</td>
                                 <td>{Number(fd.daysLeft).toFixed()}</td>
                                 <td style={{color: "green"}}>{Number(Number(fd.profit).toFixed()).toLocaleString()}</td>
-                                <td onClick={() => removeFD(fd.bankName, fd.key)}><i className="fa-regular fa-trash-can delete-btn"></i></td>
+                                <td onClick={() => removeFD(fd.bankName, fd.key)}><i className="fa-regular fa-trash-can"></i></td>
                             </tr>
                         )
                     })} />

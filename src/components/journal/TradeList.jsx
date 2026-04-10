@@ -207,7 +207,7 @@ function TradeList({ journal }) {
                                     <td>{Number(trade.stopLoss).toLocaleString()}</td>
                                     <td>{Number(trade.charges).toLocaleString()}</td>
                                     <td style={{color: tradePnL > 0? "#00e5a0" : "#ff4560"}}>{(tradePnL).toLocaleString()} ({tradeROI.toFixed(2)}%)</td>
-                                    <td><i onClick={() => deleteTrade(trade.key)} className="fa-regular fa-trash-can delete-btn"></i></td>
+                                    <td><i onClick={() => deleteTrade(trade.key)} className="fa-regular fa-trash-can"></i></td>
                                 </tr>
 
                                 {isActive === index && (<tr className='expanded-section'>

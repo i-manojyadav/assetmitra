@@ -1,0 +1,40 @@
+.asset-performers {
+    width: 100%;
+}
+
+.selected-performers {
+    gap: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.selected-performers > div {
+    width: 100%;
+}
+
+.performer-title {
+    font-size: 15px;
+    color: #6b6b6b;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.performer-item {
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    justify-content: space-between;
+    border-bottom: 1px solid #232323;
+}
+
+
+@media(max-width: 768px) {
+    .selected-performers {
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+}

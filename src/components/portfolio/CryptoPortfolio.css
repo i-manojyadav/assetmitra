@@ -3,17 +3,7 @@
 }
 
 .crypto-stats {
-    align-items: center;
-}
-
-.crypto-stats-desk {
-    gap: 25px;
-    display: flex;
-    align-items: center;
-}
-
-.crypto-stats-mobo {
-    display: none;
+    width: 100%;
 }
 
 .add-coin-toggle {
@@ -47,12 +37,8 @@
         width: 100%;
     }
 
-    .crypto-stats-desk {
+    .crypto-stats-desktop {
         display: none;
-    }
-
-    .crypto-stats-mobo {
-        display: block;
     }
 
     .add-coin-form form {

@@ -1,0 +1,50 @@
+.asset-allocation {
+    width: 100%;
+}
+
+.select-asset {
+    gap: 10px;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.select-asset > label {
+    display: flex;
+    align-items: center;
+}
+
+.select-asset > label input[type="radio"] {
+    margin-left: 0;
+}
+
+.selected-asset {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selected-asset > div {
+    width: 100%;
+}
+
+.asset-alloc-list {
+    display: flex;
+    font-size: 15px;
+    margin-bottom: 10px;
+    align-items: center;
+    padding-bottom: 5px;
+    justify-content: space-between;
+    border-bottom: 1px solid #232323;
+}
+
+@media (max-width: 768px) {
+    .asset-allocation {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .selected-asset {
+        display: flex;
+        flex-direction: column;
+    }
+}

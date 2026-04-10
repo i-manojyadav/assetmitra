@@ -1,5 +1,5 @@
 import './CryptoPortfolio.css'
-import StatCard, { StatCardMobo } from '../ui/StatCard'
+import StatCard, { StatCardMobile } from '../ui/StatCard'
 import { useContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'
 import toast from 'react-hot-toast';
@@ -73,13 +73,13 @@ export default function CryptoPortfolio() {
     return (
         <div className='crypto-portfolio'>
             <div className='crypto-stats-'>
-                <div className='crypto-stats-desk'>
+                <div className='stats crypto-stats-desktop'>
                     <StatCard title={"Invested"} value={cryptoStats.invested} subTitle={"Capital deployed"} />
                     <StatCard title={"Current"} value={cryptoStats.current} subTitle={"Market Value"} />
                     <StatCard title={"Profit & Loss"} value={cryptoStats.pnl} subTitle={"Unrealized"} roi={cryptoStats.roi} isPnL={true} />
                 </div>
-                <div className='crypto-stats-mobo'>
-                    <StatCardMobo invested={cryptoStats.invested} current={cryptoStats.current} pnl={cryptoStats.pnl} roi={cryptoStats.roi} color={true}/>
+                <div className='stats-mobile'>
+                    <StatCardMobile invested={cryptoStats.invested} current={cryptoStats.current} pnl={cryptoStats.pnl} roi={cryptoStats.roi} />
                 </div>
             </div>
             <div className='add-coin-toggle'>
