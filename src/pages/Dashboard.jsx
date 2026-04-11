@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PortfolioDashboard from '../components/dashboard/portfolio/PortfolioDashboard';
 import './Dashboard.css'
+import StrategyDashboard from '../components/dashboard/strategy/StrategyDashboard';
 
 function Dashboard() {
 
@@ -21,7 +22,7 @@ function Dashboard() {
             </div>
             <div className='tab-content'>
                 {active === "dashboard" && <PortfolioDashboard />}
-                {active === "strategy" && <p>Strategy</p>}
+                {active === "strategy" && <StrategyDashboard />}
                 {active === "journal" && <p>Journal</p>}
             </div>
         </div>

@@ -11,9 +11,7 @@ function AssetAllocation() {
 
     const [ active, setActive ] = useState("crypto");
     const [ data, setData ] = useState([]);
-
-    console.log(fdFolio);
-
+    
 
     // HANDLE CHANGE
     function handleChange(e) {
@@ -75,7 +73,7 @@ function AssetAllocation() {
                 </div>
                 <div className='selected-asset-list'>
                     {data.map((asset) => (
-                        <p className='asset-alloc-list'><span style={{color: asset.fill}}>{asset.name}</span> <span>{Number(Number(asset.value).toFixed(2)).toLocaleString()}%</span></p>
+                        <p className='asset-items'><span style={{color: asset.fill}}>{asset.name}</span> <span>{Number(Number(asset.value).toFixed(2)).toLocaleString()}%</span></p>
                     ))}
                 </div>
             </div>

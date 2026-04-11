@@ -143,7 +143,7 @@ function Strategy() {
                 }) : ""}
             </div>
 
-            <div className='stats'>
+            <div className='strategy-stats'>
                 {selectedStrategy && <StrategyStats strategy={selectedStrategy} />}
             </div>
         </div>

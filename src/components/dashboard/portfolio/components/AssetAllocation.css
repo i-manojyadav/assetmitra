@@ -27,16 +27,6 @@
     width: 100%;
 }
 
-.asset-alloc-list {
-    display: flex;
-    font-size: 15px;
-    margin-bottom: 10px;
-    align-items: center;
-    padding-bottom: 5px;
-    justify-content: space-between;
-    border-bottom: 1px solid #232323;
-}
-
 @media (max-width: 768px) {
     .asset-allocation {
         display: flex;

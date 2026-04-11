@@ -311,6 +311,25 @@ input[type="radio"] {
     display: none;
 }
 
+/* ASSET ITEM */
+.asset-list-title {
+    font-size: 15px;
+    color: #6b6b6b;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.asset-items {
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    justify-content: space-between;
+    border-bottom: 1px solid #232323;
+}
+
 /* MOBILE CSS */
 
 @media(max-width: 768px) {

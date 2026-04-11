@@ -1,0 +1,10 @@
+.strategy-performers {
+    gap: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.strategy-performers > div {
+    width: 100%;
+}
