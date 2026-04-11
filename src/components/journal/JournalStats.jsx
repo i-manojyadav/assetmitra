@@ -78,8 +78,8 @@ function JournalStats({ trades }) {
             <StatCard title={"Gross P&L"} value={journalStats.grossPnL} subTitle={"Before charges"} />
             <StatCard title={"Net P&L"} value={journalStats.netPnL} subTitle={"After charges"} roi={journalStats.roi} isPnL={true} />
             <StatCard title={"Win Rate"} value={journalStats.winRate} subTitle={"Win Rate (%)"} isWinRate={true} />
-            <StatCard title={"Total Trades"} value={trades.length} subTitle={"No. of total trades"} />
-            <StatCard title={"Charges"} value={journalStats.charges} subTitle={"Brokerage & Taxes"} />
+            <StatCard title={"Trades"} value={trades.length} subTitle={"Total trades"} />
+            <StatCard title={"Charges"} value={journalStats.charges} subTitle={"Total charges"} />
         </div>
     )
 }

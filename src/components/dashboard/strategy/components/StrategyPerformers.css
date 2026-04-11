@@ -8,3 +8,11 @@
 .strategy-performers > div {
     width: 100%;
 }
+
+@media(max-width: 768px) {
+    .strategy-performers {
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+}

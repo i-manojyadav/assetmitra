@@ -140,10 +140,10 @@ function StrategyStats({ strategy }) {
         <div className='stats'>
             <StatCard title={"Net P&L"} value={strategyStats.netPnL} subTitle={"After charges"} roi={strategyStats.roi} isPnL={true}/>
             <StatCard title={"Win Rate"} value={strategyStats.winRate} subTitle={"Win Rate %"} isWinRate={true} />
-            <StatCard title={"Charges"} value={strategyStats.charges} subTitle={"Brokerage & Taxes"} />
+            <StatCard title={"Charges"} value={strategyStats.charges} subTitle={"Total charges"} />
             <StatCard title={"Best Trade"} value={strategyStats.bestTrade?.pnl} subTitle={strategyStats.bestTrade?.symbol ?? "Symbol"} />
             <StatCard title={"Worst Trade"} value={strategyStats.worstTrade?.pnl} subTitle={strategyStats.worstTrade?.symbol ?? "Symbol"} />
-            <StatCard title={"Trades"} value={trades.length} subTitle={"No. of total trades"} />
+            <StatCard title={"Trades"} value={trades.length} subTitle={"Total trades"} />
         </div>
         </>
     )
