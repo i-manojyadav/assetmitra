@@ -1,17 +1,16 @@
-.portfolio-dashboard {
+.journal-dashboard {
     gap: 25px;
-    width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.portfolio-dashboard > div {
+.journal-dashboard > div {
     width: 100%;
     padding: 15px 0px 35px 0;
     background-color: #000000;
     border-bottom: 1px solid #232323;
 }
 
-.portfolio-dashboard > div > h2 {
+.journal-dashboard > div > h2 {
     margin-bottom: 15px;
 }

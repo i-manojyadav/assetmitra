@@ -11,7 +11,7 @@ function StrategyDashboard() {
     const { strategies } = useContext(StrategyContext);
 
     const [ strategyTrades, setStrategyTrades ] = useState([]);
-    const [ activeStrategy, setActiveStrategy ] = useState(null);
+    const [ activeStrategy, setActiveStrategy ] = useState(strategies[0]);
 
     // FILTER TRADES
 
