@@ -4,6 +4,7 @@ import './StrategyDashboard.css'
 import StrategyStats from '../../strategy/StrategyStats';
 import StrategyPerformers from './components/StrategyPerformers';
 import { JournalContext } from '../../../context/JournalContext';
+import EmptyState from '../../ui/EmptyState';
 
 function StrategyDashboard() {
 
@@ -18,7 +19,7 @@ function StrategyDashboard() {
     return (
         <div className='strategy-dashboard'>
             <div className='strategies'>
-                {strategies.map((strategy) => {
+                {strategies.length > 0 ? strategies.map((strategy) => {
                     return (
                         <div key={strategy.key} className={strategy.key === activeStrategy?.key ? "strategy-card-active" : "strategy-card"} onClick={() => setActiveStrategy(strategy)}>
                             <div className='strategy-info'>
@@ -30,15 +31,15 @@ function StrategyDashboard() {
                             </div>
                         </div>
                     )
-                })}
+                }) : <EmptyState msg={{title: "No Strategy Found", desc: "Create your first strategy"}} />}
             </div>
-            <div className='strategy-stats'>
-                {activeStrategy && <StrategyStats strategy={activeStrategy} />}
-            </div>
-            <div>
+            {activeStrategy && <div className='strategy-stats'>
+                <StrategyStats strategy={activeStrategy} />
+            </div>}
+            {activeStrategy && <div>
                 <h2>Performers</h2>
                 <StrategyPerformers />
-            </div>
+            </div>}
         </div>
     )
 }

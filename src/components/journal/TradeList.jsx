@@ -210,7 +210,7 @@ function TradeList({ journal }) {
                                     <td><i onClick={() => deleteTrade(trade.key)} className="fa-regular fa-trash-can"></i></td>
                                 </tr>
 
-                                {isActive === index && (<tr className='expanded-section'>
+                                {isActive === index && (<tr key={trade.key} className='expanded-section'>
                                     <td><span style={{color: "#909090"}}>Strategy</span></td>
                                     <td><span className='badge'>{trade.strategy}</span></td>
                                     <td><span style={{color: "#909090"}}>Type</span></td>

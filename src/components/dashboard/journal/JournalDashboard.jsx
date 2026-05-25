@@ -26,15 +26,15 @@ function JournalDashboard() {
                         </div>
                     </div>
                     )
-                }) : <EmptyState msg={{title: "No Journals Found", desc: "Create your first Journal"}} />}
+                }) : <EmptyState msg={{title: "No Journal Found", desc: "Create your first Journal"}} />}
             </div>
-            <div>
-                {activeJournal && <JournalStats trades={activeJournal.trades} />}
-            </div>
-            <div>
+            {activeJournal && <div>
+                <JournalStats trades={activeJournal.trades} />
+            </div>}
+            {activeJournal && <div>
                 <h2>P&L Performance</h2>
                 <JournalPerformance trades={activeJournal.trades} />
-            </div>
+            </div>}
         </div>
     )
 }

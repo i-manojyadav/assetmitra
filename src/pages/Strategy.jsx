@@ -62,7 +62,6 @@ function Strategy() {
             createdAt: new Date()
         })
 
-        console.log(strategies);
     }
 
     // DELETE STRATEGY
