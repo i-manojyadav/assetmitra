@@ -22,6 +22,10 @@ export default function CryptoPortfolio() {
         }
     }
 
+    const [ searchCoin, setSearchCoin ] = useState("");
+    const [ coinMatch, setCoinMatch ] = useState([]);
+    const [ searchActive, setSearchActive ] = useState(false);
+
     // ADD NEW COIN
     const [coin, setCoin] = useState({
         symbol: "",
@@ -29,6 +33,37 @@ export default function CryptoPortfolio() {
         avgBuy: ""
     });
 
+    // HANDLE COIN SEARCH
+    function handleCoinSearch(e) {
+        setSearchActive(true);
+        let input = e.target.value;
+
+        if (input === "") {
+            setSearchActive(false);
+        }
+        
+        setSearchCoin(input);
+
+        let coinSymbols = coinList.map((coin) => {
+            return coin.symbol;
+        })
+
+        let filteredCoins = coinSymbols.filter((coin) => {
+            return coin.toLowerCase().startsWith(input.toLowerCase());
+        });
+
+        setCoinMatch(filteredCoins);
+    }
+
+    // HANDLE COIN SELECT (SEARCH)
+    function handleCoinSelect(coin) {
+        setSearchCoin(coin);
+        setCoin((data) => {
+            return {...data, symbol: coin}
+        });
+
+        setSearchActive(false);
+    }
 
     // HANDLE USER INPUT CHANGE
     function handleCoinChange(e) {
@@ -50,7 +85,7 @@ export default function CryptoPortfolio() {
         coinList.filter((crypto) => {
             if (crypto.symbol === coin.symbol.toUpperCase()) {
                 setFolioCoins((userCoin) => {
-                    return [...userCoin, {...coin, ltp: crypto.lastPrice * 90, inv: coin.qty * coin.avgBuy, key: uuidv4()}]
+                    return [...userCoin, {...coin, ltp: crypto.lastPrice * 94, inv: coin.qty * coin.avgBuy, key: uuidv4()}]
                 });
 
                 setCoin({
@@ -59,11 +94,9 @@ export default function CryptoPortfolio() {
                     avgBuy: ""
                 });
 
-                toast.success(`(${crypto.symbol}) Added Successfully!`);
-            }
+                setSearchCoin("");
 
-            else {
-                console.log("ERROR IN USER INPUT");
+                toast.success(`(${crypto.symbol}) Added Successfully!`);
             }
         });
     }
@@ -88,11 +121,17 @@ export default function CryptoPortfolio() {
             <div style={{display: isActive? "block" : "none"}} className='add-coin'>
                 <div className='add-coin-form'>
                     <form onSubmit={addACoin}>
-                        <input type="text" placeholder='Enter Coin Symbol' value={coin.symbol} name='symbol' onChange={handleCoinChange}/>
+                        <input type="search" placeholder='Enter Coin Symbol' value={searchCoin} onChange={handleCoinSearch}/>
                         <input type="number" step="any" placeholder='Enter Quantity' value={coin.qty} name='qty' onChange={handleCoinChange}/>
                         <input type="number" step="any" placeholder='Enter Avg. Buy Price' value={coin.avgBuy} name='avgBuy' onChange={handleCoinChange}/>
                         <button onClick={() => setIsActive(false)} className='addCoinBtn'><i className="fa-solid fa-plus"></i>Add</button>
                     </form>
+                </div>
+                <div className='coin-search-list' style={{display: searchActive ? "block" : "none"}}>
+                    <h3>Suggestions</h3>
+                    {coinMatch.map((coin, index) => (
+                        <p className='coin-search-item' key={index} onClick={() => handleCoinSelect(coin)}><span>{coin}</span> <span><i className="fa-regular fa-square-plus"></i></span></p>
+                    ))}
                 </div>
             </div>
             <div className='crypto-folio'>

@@ -27,7 +27,7 @@ export function CryptoContext({ children }) {
 
         const interval = setInterval(() => {
             fetchCoins();
-        }, 15000);
+        }, 5000);
 
         return () => clearInterval(interval);
 
@@ -76,7 +76,7 @@ export function CryptoContext({ children }) {
 
             if (!apiCoin) return coin;
 
-            return {...coin, ltp: Number(apiCoin.lastPrice * 90), cur: coin.qty * Number(apiCoin.lastPrice * 90), pnl: coin.qty * Number(apiCoin.lastPrice * 90) - coin.inv };
+            return {...coin, ltp: Number(apiCoin.lastPrice * 94), cur: coin.qty * Number(apiCoin.lastPrice * 90), pnl: coin.qty * Number(apiCoin.lastPrice * 90) - coin.inv };
         });
 
         setFolioCoins(coinLTP);
