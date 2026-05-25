@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './AddTrade.css'
 import { v4 as uuidv4 } from 'uuid';
 import { JournalContext } from '../../context/JournalContext';
@@ -10,6 +10,7 @@ function AddTrade({ journalKey }) {
     const { journals, setJournals } = useContext(JournalContext);
     const { strategies } = useContext(StrategyContext);
 
+    const [ trades, setTrades ] = useState([]);
     const [ addTrade, setAddTrade ] = useState({
         symbol: "",
         side: "",
@@ -25,15 +26,68 @@ function AddTrade({ journalKey }) {
         key: uuidv4()
     });
 
-    const [ active, setActive ] = useState(false);
+    const [ search, setSearch ] = useState({symbol: ""});
+    const [ searchResults, setSearchResults ] = useState([]);
 
-    //TOGGLE
+    const [ active, setActive ] = useState(false);
+    const [ searchActive, setSearchActive ] = useState(false);
+    const [ inputActive, setInput ] = useState(false);
+
+    // TOGGLE
     function toggle() {
         if (active === false) {
             setActive(true);
         } else {
             setActive(false);
         }
+    }
+
+    // ACTIVE JOURNAL
+    useEffect(() => {
+
+        const journal = journals.find((jr) => {
+            return jr.key === journalKey;
+        });
+
+        const symbols = journal.trades.map((trade) => {
+            return trade.symbol;
+        });
+
+        const uniqueSymbols = [...new Set(symbols)];
+
+        setTrades(uniqueSymbols);
+    }, [journalKey])
+
+
+    function handleSearch(e) {
+        setSearchActive(true);
+
+        let input = e.target.value;
+
+        if (input === "") {
+            setSearchActive(false);
+        }
+
+        setSearch({
+            ...search, [e.target.name]: e.target.value
+        });
+
+        let results = trades.filter((trade) => {
+            return trade.toLowerCase().startsWith(input.toLowerCase());
+        });
+
+        setSearchResults(results);
+    }
+
+    function handleSelect(symbol) {
+        setSearchActive(false);
+
+        setSearch({...search, symbol: symbol});
+        
+        setAddTrade((data) => {
+            return {...data, symbol: symbol}
+        })
+        
     }
 
     // HANDLE CHANGE
@@ -64,6 +118,10 @@ function AddTrade({ journalKey }) {
             notes: "",
             key: uuidv4()
         });
+
+        setSearch({
+            symbol: ""
+        })
 
         toggle();
 
@@ -99,12 +157,20 @@ function AddTrade({ journalKey }) {
                 <form onSubmit={onAddTrade}>
                     <div className='trade-symbol-side'>
                         <div className='trade-symbol'>
-                            <input type='text' placeholder='Enter Symbol' value={addTrade.symbol} name='symbol' onChange={handleChange} required />
+                            <input type='search' placeholder='Enter Symbol' value={search.symbol} name='symbol' onChange={handleSearch} required />
                         </div>
                         <div className='trade-side'>
                             <label><input type='radio' value='buy' name='side' checked={addTrade.side === "buy"} onChange={handleChange} required />Buy</label>
                             <label><input type='radio' value='sell' name='side' checked={addTrade.side === "sell"} onChange={handleChange} required />Sell</label>
                         </div>
+                    </div>
+
+                    <div className='search-results' style={{display: searchActive ? "block" : "none"}}>
+                        <h3>Suggestions</h3>
+                        <p className='search-item' onClick={() => handleSelect(search.symbol)}><span>{search.symbol}</span> <span><i className="fa-regular fa-pen-to-square"></i></span></p>
+                        {searchResults.map((trade, index) => (
+                            <p className='search-item' key={index} onClick={() => handleSelect(trade)}><span>{trade}</span> <span><i className="fa-regular fa-square-plus"></i></span></p>
+                        ))}
                     </div>
 
                     <div className='trade-type-strategy'>

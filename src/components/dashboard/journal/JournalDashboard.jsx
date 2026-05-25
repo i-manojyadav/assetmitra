@@ -3,6 +3,7 @@ import './JournalDashboard.css'
 import { JournalContext } from '../../../context/JournalContext';
 import JournalStats from '../../journal/JournalStats';
 import JournalPerformance from './components/JournalPerformance';
+import EmptyState from '../../ui/EmptyState';
 
 function JournalDashboard() {
 

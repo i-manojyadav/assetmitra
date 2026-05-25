@@ -96,6 +96,33 @@
     position: absolute;
 }
 
+.search-results {
+    padding: 20px 5px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #181818;
+}
+
+.search-results > h3 {
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.search-item {
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    justify-content: space-between;
+    border-bottom: 1px solid #232323;
+}
+
+.search-item:hover {
+    border-radius: 5px;
+    background-color: #111111;
+}
+
 .trade-type-strategy {
     gap: 25px;
     display: flex;
