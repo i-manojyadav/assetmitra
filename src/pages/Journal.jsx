@@ -47,7 +47,7 @@ function Journal() {
             return [...prev, createJournal];
         });
 
-        toast.success("Journal created successfully");
+        toast.success("Journal created");
 
         setCreateJournal({
             name: "",
@@ -88,7 +88,7 @@ function Journal() {
                 <button style={{display: active? "none" : "block"}} onClick={() => toggle()}><i className="fa-solid fa-plus"></i> Create Journal</button>
                 <div style={{display: active? "block" : "none"}} className='journal-form'>
                     <form onSubmit={onCreate}>
-                        <input type='text' placeholder='Journal name...' value={createJournal.name} name='name' onChange={handleChange} required />
+                        <input type='text' placeholder='Journal name...' style={{textTransform: 'uppercase'}} value={createJournal.name} name='name' onChange={handleChange} required />
                         <button>Create Journal</button>
                     </form>
                 </div>
@@ -104,7 +104,7 @@ function Journal() {
                         </div>
                         <div className='journal-action'>
                             <p className='journal-created-at'><i className="fa-solid fa-calendar-days"></i>&nbsp;&nbsp;{journal.createdAt.toDateString()}</p>
-                            <i onClick={() => deleteJournal(journal.key)} className="fa-regular fa-trash-can delete-btn"></i>
+                            <i style={{ display: selectedJournal?.[0]?.key === journal.key ? "block" : "none"}} onClick={() => deleteJournal(journal.key)} className="fa-solid fa-trash delete-btn"></i>
                         </div>
                     </div>
                     )

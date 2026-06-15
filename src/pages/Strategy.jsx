@@ -48,7 +48,9 @@ function Strategy() {
             return [...prev, createStrategy]
         });
 
-        toast.success(`${createStrategy.name}, Created`);
+        toast.success(`Strategy added`);
+
+        toggle();
 
         setCreateStrategy({
             name: "",
@@ -71,6 +73,8 @@ function Strategy() {
             setStrategies(strategies.filter((strategy) => {
                 return strategy.key !== key;
             }));
+
+            toast.success("Strategy deleted");
         }
 
     }
@@ -84,9 +88,9 @@ function Strategy() {
             <div style={{display: isActive? "block" : "none"}} className='strategy-form'>
                 <form onSubmit={onCreate}>
                     <div className='strategy-name-price'>
-                        <input type='text' placeholder='Strategy Name' value={createStrategy.name} name='name' onChange={handleChange} required />
-                        <input type='number' placeholder='Target (%)' value={createStrategy.target} name='target' onChange={handleChange} required />
-                        <input type='number' placeholder='Stop Loss (%)' value={createStrategy.stopLoss} name='stopLoss' onChange={handleChange} required />
+                        <input type='text' placeholder='Strategy Name' style={{textTransform: 'uppercase'}} value={createStrategy.name} name='name' onChange={handleChange} required />
+                        <input type='number' placeholder='Target (%)' style={{textTransform: 'uppercase'}} value={createStrategy.target} name='target' onChange={handleChange} required />
+                        <input type='number' placeholder='Stop Loss (%)' style={{textTransform: 'uppercase'}} value={createStrategy.stopLoss} name='stopLoss' onChange={handleChange} required />
                     </div>
 
                     <div className='strategy-options'>
@@ -117,7 +121,7 @@ function Strategy() {
                     </div>
 
                     <div className='strategy-notes'>
-                        <input type='text' placeholder='Define entry, exit, & rules...' value={createStrategy.notes} name='notes' onChange={handleChange} required />
+                        <input type='text' placeholder='Define entry, exit, & rules...' style={{textTransform: 'uppercase'}} value={createStrategy.notes} name='notes' onChange={handleChange} required />
                     </div>
 
                     <button className='create-strategy-btn'>Add Strategy</button>
@@ -135,7 +139,7 @@ function Strategy() {
 
                             <div className='strategy-action'>
                                 <p className='strategy-created-at'><i className="fa-solid fa-calendar-days"></i>&nbsp;&nbsp;{strategy.createdAt.toDateString()}</p>
-                                <i onClick={() => {deleteStrategy(strategy.key)}} className="fa-regular fa-trash-can delete-btn"></i>
+                                <i onClick={() => {deleteStrategy(strategy.key)}} className="fa-solid fa-trash delete-btn"></i>
                             </div>
                         </div>
                     )

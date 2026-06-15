@@ -15,6 +15,11 @@ nav {
     justify-content: space-between;
 }
 
+nav div:nth-of-type(2) {
+    gap: 3px;
+    display: flex;
+}
+
 header img {
     width: 40px;
     height: 40px;

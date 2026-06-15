@@ -96,7 +96,9 @@ export default function CryptoPortfolio() {
 
                 setSearchCoin("");
 
-                toast.success(`(${crypto.symbol}) Added Successfully!`);
+                addCoinToggle();
+
+                toast.success(`Coin added`);
             }
         });
     }
@@ -121,10 +123,10 @@ export default function CryptoPortfolio() {
             <div style={{display: isActive? "block" : "none"}} className='add-coin'>
                 <div className='add-coin-form'>
                     <form onSubmit={addACoin}>
-                        <input type="search" placeholder='Enter Coin Symbol' value={searchCoin} onChange={handleCoinSearch}/>
-                        <input type="number" step="any" placeholder='Enter Quantity' value={coin.qty} name='qty' onChange={handleCoinChange}/>
-                        <input type="number" step="any" placeholder='Enter Avg. Buy Price' value={coin.avgBuy} name='avgBuy' onChange={handleCoinChange}/>
-                        <button onClick={() => setIsActive(false)} className='addCoinBtn'><i className="fa-solid fa-plus"></i>Add</button>
+                        <input type="search" placeholder='Coin Symbol' style={{textTransform: 'uppercase'}} value={searchCoin} onChange={handleCoinSearch}/>
+                        <input type="number" step="any" placeholder='Quantity' style={{textTransform: 'uppercase'}} value={coin.qty} name='qty' onChange={handleCoinChange}/>
+                        <input type="number" step="any" placeholder='Avg. Buy Price' style={{textTransform: 'uppercase'}} value={coin.avgBuy} name='avgBuy' onChange={handleCoinChange}/>
+                        <button className='addCoinBtn'><i className="fa-solid fa-plus"></i>Add</button>
                     </form>
                 </div>
                 <div className='coin-search-list' style={{display: searchActive ? "block" : "none"}}>

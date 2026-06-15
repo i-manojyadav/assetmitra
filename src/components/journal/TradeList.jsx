@@ -3,6 +3,7 @@ import './TradeList.css'
 import { StrategyContext } from '../../context/StrategyContext';
 import JournalStats from './JournalStats';
 import { JournalContext } from '../../context/JournalContext';
+import toast from 'react-hot-toast';
 
 function TradeList({ journal }) {
 
@@ -122,6 +123,8 @@ function TradeList({ journal }) {
         setTrades(trades.filter((trade) => {
             return trade.key !== key;
         }));
+
+        toast.success("Trade deleted");
     }
 
 

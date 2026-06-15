@@ -102,7 +102,7 @@ function AddTrade({ journalKey }) {
         e.preventDefault();
         
         journalTrade(addTrade, journalKey);
-        toast.success("Trade added successfully");
+        toast.success("Trade added");
 
         setAddTrade({
             symbol: "",
@@ -157,7 +157,7 @@ function AddTrade({ journalKey }) {
                 <form onSubmit={onAddTrade}>
                     <div className='trade-symbol-side'>
                         <div className='trade-symbol'>
-                            <input type='search' placeholder='Enter Symbol' value={search.symbol} name='symbol' onChange={handleSearch} required />
+                            <input type='search' placeholder='Enter Symbol' style={{textTransform: 'uppercase'}} value={search.symbol} name='symbol' onChange={handleSearch} required />
                         </div>
                         <div className='trade-side'>
                             <label><input type='radio' value='buy' name='side' checked={addTrade.side === "buy"} onChange={handleChange} required />Buy</label>
@@ -176,7 +176,7 @@ function AddTrade({ journalKey }) {
                     <div className='trade-type-strategy'>
                         <div className='trade-type'>
                             <label>Type</label>
-                            <select value={addTrade.type} name='type' onChange={handleChange} required >
+                            <select value={addTrade.type} name='type' onChange={handleChange} style={{textTransform: 'uppercase'}} required >
                                 <option value="" disabled>Select</option>
                                 <option value="swing" >Swing</option>
                                 <option value="intraday" >Intraday</option>
@@ -187,7 +187,7 @@ function AddTrade({ journalKey }) {
 
                         <div className='trade-strategy'>
                             <label>Strategy</label>
-                            <select value={addTrade.strategy} name='strategy' onChange={handleChange} required >
+                            <select value={addTrade.strategy} name='strategy' onChange={handleChange} style={{textTransform: 'uppercase'}} required >
                                 <option value="" disabled>Select</option>
                                 {strategies.map((strategy, idx) => {
                                     return <option value={strategy.name} key={idx}>{strategy.name}</option>
@@ -197,30 +197,30 @@ function AddTrade({ journalKey }) {
                     </div>
 
                     <div className='trade-price'>
-                        <input type='number' placeholder='Entry Price' value={addTrade.entryPrice} name='entryPrice' onChange={handleChange} required />
-                        <input type='number' placeholder='Exit Price' value={addTrade.exitPrice} name='exitPrice' onChange={handleChange} required />
+                        <input type='number' placeholder='Entry Price' style={{textTransform: 'uppercase'}} value={addTrade.entryPrice} name='entryPrice' onChange={handleChange} required />
+                        <input type='number' placeholder='Exit Price' style={{textTransform: 'uppercase'}} value={addTrade.exitPrice} name='exitPrice' onChange={handleChange} required />
                     </div>
 
                     <div className='trade-qty-sl'>
-                        <input type='number' placeholder='Enter Quantity' value={addTrade.qty} name='qty' onChange={handleChange} required />
+                        <input type='number' placeholder='Enter Quantity' style={{textTransform: 'uppercase'}} value={addTrade.qty} name='qty' onChange={handleChange} required />
 
-                        <input type='number' placeholder='Enter Stop-loss' value={addTrade.stopLoss} name='stopLoss' onChange={handleChange} required />
+                        <input type='number' placeholder='Enter Stop-loss' style={{textTransform: 'uppercase'}} value={addTrade.stopLoss} name='stopLoss' onChange={handleChange} required />
                     </div>
 
                     <div className='trade-charges-datetime'>
                         <div className='trade-charges'>
                             <label>All Charges</label>
-                            <input type='number' placeholder='Enter Charges' value={addTrade.charges} name='charges' onChange={handleChange} required />
+                            <input type='number' placeholder='Enter Charges' style={{textTransform: 'uppercase'}} value={addTrade.charges} name='charges' onChange={handleChange} required />
                         </div>
                         <div className='trade-datetime'>
                             <label htmlFor='datetime'>Date & Time:</label>
-                            <input type='datetime-local' value={addTrade.dateTime} name='dateTime' onChange={handleChange} required />
+                            <input type='datetime-local' value={addTrade.dateTime} name='dateTime' onChange={handleChange} style={{textTransform: 'uppercase'}} required />
                         </div>
                     </div>
 
                     <div className='trade-notes'>
                         <label>Trade Notes</label>
-                        <input type='text' placeholder='Why did you take this trade?' value={addTrade.notes} name='notes' onChange={handleChange} required />
+                        <input type='text' placeholder='Why did you take this trade?' style={{textTransform: 'uppercase'}} value={addTrade.notes} name='notes' onChange={handleChange} required />
                     </div>
 
                     <button className='log-trade-btn'>Log Trade</button>

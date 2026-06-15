@@ -41,9 +41,11 @@ function FDPortfolio() {
             return [...prev, fd];
         })
 
+        addFdToggle();
+
         setFD({ bankName: "", principalAmount: "", intRate: "", startDate: "", maturityDate: "" });
 
-        toast.success(`${fd.bankName} Added Successfully!`);
+        toast.success(`FD added`);
     }
 
     // CALCULATE FD DETAILS
@@ -93,15 +95,15 @@ function FDPortfolio() {
     }, [fdFolio.length]);
 
 
-    //Remove A FD
+    //Remove FD
     function removeFD(bank, key) {
         setFDFolio(() => {
             return fdFolio.filter((fd) => {
                 return fd.key != key
             });
-        })
+        });
 
-        toast.success(`${bank} Removed Successfully!`);
+        toast.success(`FD deleted`);
     }
 
 
@@ -125,16 +127,16 @@ function FDPortfolio() {
                 <div className='add-fd-form'>
                     <form onSubmit={onFDAdd}>
                         <div>
-                            <input type='text' value={fd.bankName} name='bankName' onChange={handleFDChange} placeholder='Bank Name' />
-                            <input type='number' value={fd.principalAmount} name='principalAmount' onChange={handleFDChange} placeholder='Principal Amount' />
-                            <input type='number' value={fd.intRate} name='intRate' onChange={handleFDChange} placeholder='Interest Rate %' />
+                            <input type='text' value={fd.bankName} name='bankName' onChange={handleFDChange} placeholder='Bank Name' style={{textTransform: 'uppercase'}} required />
+                            <input type='number' value={fd.principalAmount} name='principalAmount' onChange={handleFDChange} placeholder='Principal Amount' style={{textTransform: 'uppercase'}} required />
+                            <input type='number' value={fd.intRate} name='intRate' onChange={handleFDChange} placeholder='Interest Rate (%)' style={{textTransform: 'uppercase'}} required />
                         </div>
                         <div>
                             <label htmlFor='start-date'>Start Date:</label>
-                            <input id='start-date' type='date' value={fd.startDate} name='startDate' onChange={handleFDChange} />
+                            <input id='start-date' type='date' value={fd.startDate} name='startDate' onChange={handleFDChange} style={{textTransform: 'uppercase'}} required />
                             <label htmlFor='maturity-date'>Maturity Date:</label>
-                            <input id='maturity-date' type='date' value={fd.maturityDate} name='maturityDate' onChange={handleFDChange} />
-                            <button onClick={() => setIsActive(false)}><i className="fa-solid fa-plus"></i>Add</button>
+                            <input id='maturity-date' type='date' value={fd.maturityDate} name='maturityDate' onChange={handleFDChange} style={{textTransform: 'uppercase'}} required />
+                            <button><i className="fa-solid fa-plus"></i>Add</button>
                         </div>
                     </form>
                 </div>
